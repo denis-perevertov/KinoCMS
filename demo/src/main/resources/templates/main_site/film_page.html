@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" th:href="@{/css/main_page_17.css}">
+  <link rel="stylesheet" th:href="@{/css/main_h_f1.css}">
+  <link rel="stylesheet" th:href="@{/css/film-page.css}">
+  <title>KinoCMS - Main Page</title>
+</head>
+
+<body>
+
+<div th:insert="main_h :: main_header"></div>
+
+<div class="main">
+
+  <div class="youtube-video">
+    Youtube Video
+  </div>
+
+  <div class="schedule">
+
+    <div class="row">
+      <p>Расписание сеансов кинотеатра</p>
+      <select name="cinema" id="cinema">
+        <option th:each="theater : ${theaters}" value="${theater.name}"><span th:text="${theater.name}">III</span></option>
+      </select>
+      <button>Все</button>
+      <button>3D</button>
+      <button>2D</button>
+    </div>
+
+    <div class="row">
+      <div class="day-block">
+        <p class="day">18 ЧТ</p>
+        <p>Августа</p>
+      </div>
+      <div class="day-block">
+        <p class="day">19 ПТ</p>
+        <p>Августа</p>
+      </div>
+      <div class="day-block">
+        <p class="day">20 СБ</p>
+        <p>Августа</p>
+      </div>
+      <div class="day-block">
+        <p class="day">21 ВС</p>
+        <p>Августа</p>
+      </div>
+      <div class="day-block">
+        <p class="day">22 ПН</p>
+        <p>Августа</p>
+      </div>
+      <div class="day-block">
+        <p class="day">23 ВТ</p>
+        <p>Августа</p>
+      </div>
+      <div class="day-block">
+        <p class="day">24 СР</p>
+        <p>Августа</p>
+      </div>
+    </div>
+
+    <h2 style="text-align: center;">Москва</h2>
+
+      <div class="cinema-schedule">
+        <div class="time-block">
+          <div class="time-block-row">
+            <h3 style="border: 1px solid black;"><b>16:40</b></h3>
+            <h3>3D</h3>
+          </div>
+          <div class="time-block-row">
+            <p style="border: 1px solid black;">Зал 1</p>
+            <p>23/56/120</p>
+          </div>
+        </div>
+        <div class="time-block">
+          <p>16:40</p>
+          <p>3D</p>
+          <p>Зал 1</p>
+          <p>23/56/120</p>
+        </div>
+        <div class="time-block">
+          <p>16:40</p>
+          <p>3D</p>
+          <p>Зал 1</p>
+          <p>23/56/120</p>
+        </div>
+        <div class="time-block">
+          <p>16:40</p>
+          <p>3D</p>
+          <p>Зал 1</p>
+          <p>23/56/120</p>
+        </div>
+        <div class="time-block">
+          <p>16:40</p>
+          <p>3D</p>
+          <p>Зал 1</p>
+          <p>23/56/120</p>
+        </div>
+        <div class="time-block">
+          <p>16:40</p>
+          <p>3D</p>
+          <p>Зал 1</p>
+          <p>23/56/120</p>
+        </div>
+        <div class="time-block">
+          <p>16:40</p>
+          <p>3D</p>
+          <p>Зал 1</p>
+          <p>23/56/120</p>
+        </div>
+      </div>
+  </div>
+
+  <div class="movie-info">
+
+    <div class="row1">
+      <img src="../images/empty.jpg" alt="">
+
+      <div class="movie-description">
+        <form action="/seance" method="get">
+          <button>Купить билет</button>
+        </form>
+        <h2>Неоновый демон</h2>
+        <p>«Индейцы – это русские, они пришли из России». От таких слов «эксперта» можно потерять дар речи и погрузиться в ступор.
+
+          Ну, тогда в связи с тем, что индейцы это "наши русские", то имена надо переделать современным россиянам.
+
+          И тогда они станут Рогозин «Порванное очко», Шойгу «Вороватый олень», Песков «Спятивший тукан», Пригожин «Рабочий рот», Кадыров «Дающая овца», Медведев «Синий еблан», Путин «Срущий в чемодан».
+
+          Кто-то не согласен?</p>
+      </div>
+
+    </div>
+
+
+    <div class="row1">
+
+      <div class="movie-details">
+        <h2>инфа про фильм</h2>
+      </div>
+
+      <div class="snapshot">
+        <h2>Кадры и постеры</h2>
+        <img src="../images/empty.jpg" alt="">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="ad"></div>
+
+<div th:insert="main_f :: footer"></div>
+
+</body>
+</html>

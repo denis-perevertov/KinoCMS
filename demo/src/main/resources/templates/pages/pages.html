@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>KinoCMS</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/sidebar.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/news.css">
+        <link rel="stylesheet" href="/css/tables.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        
+    </head>
+    <body>
+
+        <div th:insert="header :: header"></div>
+        <div th:insert="sidebar :: sidebar"></div>
+
+        <div class="main">
+            <div style="text-align: right;">
+                <h1 style="display: inline-block; padding-right: 30%">Список страниц</h1>
+                <form action="/pages/add" method="get" style="display: inline-block">
+                    <button type="submit" style="display: inline-block; margin-right: 10%; width: 180px;"><i class="fa-solid fa-plus fa-lg"></i>Создать страницу</button>
+                </form>
+            </div>
+
+            <div class="table">
+                
+                <table>
+                    <tr>
+                        <th>Название</th>
+                        <th>Дата создания</th>
+                        <th>Статус</th>
+                    </tr>
+                    <tr>
+                        <td>Главная страница</td>
+                        <td>12.07.2016</td>
+                        <td>ВКЛ</td>
+                        <td class="icons"><a href="pages/main-page-edit"><i class="fa-solid fa-pen-to-square fa-2xl"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>О кинотеатре</td>
+                        <td>12.07.2016</td>
+                        <td>ВКЛ</td>
+                        <td class="icons"><a href="pages/1/edit"><i class="fa-solid fa-pen-to-square fa-2xl"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Кафе-бар</td>
+                        <td>12.07.2016</td>
+                        <td>ВКЛ</td>
+                        <td class="icons"><a href="pages/2/edit"><i class="fa-solid fa-pen-to-square fa-2xl"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>VIP-зал</td>
+                        <td>12.07.2016</td>
+                        <td>ВКЛ</td>
+                        <td class="icons"><a href="pages/3/edit"><i class="fa-solid fa-pen-to-square fa-2xl"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Реклама</td>
+                        <td>12.07.2016</td>
+                        <td>ВКЛ</td>
+                        <td class="icons"><a href="pages/4/edit"><i class="fa-solid fa-pen-to-square fa-2xl"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Детская комната</td>
+                        <td>12.07.2016</td>
+                        <td>ВКЛ</td>
+                        <td class="icons"><a href="pages/5/edit"><i class="fa-solid fa-pen-to-square fa-2xl"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Контакты</td>
+                        <td>12.07.2016</td>
+                        <td>ВКЛ</td>
+                        <td class="icons"><a href="pages/contacts-page-edit"><i class="fa-solid fa-pen-to-square fa-2xl"></i></a></td>
+                    </tr>
+
+                    <tr th:each="page : ${pages}">
+                        <td th:text="${page.name}"></td>
+                        <td th:text="${page.date}"></td>
+                        <td th:text="ВКЛ"></td>
+                        <td class="icons"><a th:href="@{'/pages/' + ${page.id} + '/edit'}"><i class="fa-solid fa-pen-to-square fa-2xl"></i></a></td>
+                        <td class="icons"><a th:href="@{'/pages/' + ${page.id} + '/delete'}"><i class="fa-solid fa-trash fa-2xl delete-icon"></i></a></td>
+                    </tr>
+
+
+                </table>
+
+            </div>
+            
+        </div>
+
+
+    </body>
+
+</html>

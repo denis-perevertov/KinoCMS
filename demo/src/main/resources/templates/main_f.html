@@ -1,0 +1,61 @@
+<footer th:fragment="footer" class="footer" style="border-top: 3px solid black;">
+  <div class="footer-info">
+    <div class="footer-col">
+      <div>
+        <h3>Мобильные приложения</h3>
+      </div>
+      <div>
+        <img src="../images/google-play-logo.svg" alt="">
+        <img src="../images/app-store-logo.svg" alt="">
+      </div>
+      <div>
+        <h5>Разработка сайтов: AVADA-MEDIA</h5>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h3>Афиша</h3>
+      <h5>Расписание</h5>
+      <h5>Скоро в прокате</h5>
+      <h5>Кинотеатры</h5>
+      <h5>Акции</h5>
+    </div>
+    <div class="footer-col">
+      <h3>О кинотеатре</h3>
+      <h5>Новости</h5>
+      <h5>Реклама</h5>
+      <h5>Кафе-бар</h5>
+      <h5>Контакты</h5>
+    </div>
+    <div class="footer-col">
+      <p><i style="color: blue" class="fa-brands fa-facebook fa-2xl"></i></p>
+      <p><i style="color: lightblue" class="fa-brands fa-twitter fa-2xl"></i></p>
+      <p><i style="color: blue" class="fa-brands fa-vk fa-2xl"></i></p>
+      <p><i style="color: orange" class="fa-brands fa-odnoklassniki fa-2xl"></i></p>
+      <p><i style="color: red" class="fa-brands fa-google-plus fa-2xl"></i></p>
+    </div>
+  </div>
+  <br>
+  <br>
+  <h4 style="text-align: center">
+    (c) KinoCMS 2016, All rights reserved
+  </h4>
+
+  <style th:inline="css">
+  body {
+    background: url(../images/banners/[[${website_background_image}]]);
+    background-size: clamp(150px, 500px, 800px) auto;
+  }
+
+  @media only screen and (max-width: 1024px){
+    body {
+        background-size: 30%;
+    }
+  }
+
+  .main, header, footer {
+    background-color: rgb(255, 255, 245);
+    border: 2px solid gray;
+  }
+  </style>
+
+</footer>

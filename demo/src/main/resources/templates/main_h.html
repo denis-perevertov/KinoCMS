@@ -1,0 +1,48 @@
+<header th:fragment="main_header">
+  <div class="logo">
+    <a class="logo" href="/banners"><img src="/images/main_logo.png" alt=""></a>
+  </div>
+  <div class="header">
+    <div>
+      <input type="text" placeholder="Поиск">
+      <p><i style="color: blue" class="fa-brands fa-facebook fa-2xl"></i></p>
+      <p><i style="color: lightblue" class="fa-brands fa-twitter fa-2xl"></i></p>
+      <p><i style="color: blue" class="fa-brands fa-vk fa-2xl"></i></p>
+      <p><i style="color: orange" class="fa-brands fa-odnoklassniki fa-2xl"></i></p>
+      <p><i style="color: red" class="fa-brands fa-google-plus fa-2xl"></i></p>
+      <div class="contacts-block">
+        <p>(048)777-77-77</p>
+        <p>(097)777-77-77</p>
+      </div>
+    </div>
+
+    <div>
+      <nav>
+        <a href="/posters"><div class="nav-element">Афиша</div></a>
+        <a href="/schedule"><div class="nav-element">Расписание</div></a>
+        <a href="/soon"><div class="nav-element">Скоро</div></a>
+        <a href="/theaters_list"><div class="nav-element">Кинотеатры</div></a>
+        <a href="/offers_list"><div class="nav-element">Акции</div></a>
+        <div class="nav-element dropdown">
+
+          <a href="/about" class="dropbtn">О кинотеатре</a>
+          <div class="dropdown-content">
+            <a href="/news-list">Новости</a>
+            <a href="/ads">Реклама</a>
+            <a href="/cafe">Кафе</a>
+            <a href="/mobile">Мобильные прил.</a>
+            <a href="/contacts">Контакты</a>
+          </div>
+
+        </div>
+      </nav>
+
+      <select name="lang" id="lang">
+        <option value="rus">RU</option>
+        <option value="ua">UA</option>
+        <option value="eng">ENG</option>
+      </select>
+    </div>
+
+  </div>
+</header>

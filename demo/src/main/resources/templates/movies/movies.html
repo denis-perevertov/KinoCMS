@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>KinoCMS</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/sidebar.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/movies1.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        
+    </head>
+    <body>
+
+        <div th:insert="header :: header"></div>
+        <div th:insert="sidebar :: sidebar"></div>
+
+        <div class="main" style="text-align: center;">
+            <h1>Список фильмов текущих</h1>
+
+            <div class="container">
+
+                <a th:each="movie : ${movies}" th:href="@{/movies/{id}/edit(id=${movie.id})}">
+                    <div class="movie-slot">
+                        <img src="images/empty.jpg" th:src="@{/images/movies/{url}(url=${movie.main_picture})}" alt="">
+                        <h3 th:text="${movie.name}">Название фильма</h3>
+                    </div>
+                </a>
+
+            </div>
+
+
+            <h1>Список фильмов, которые покажут скоро</h1>
+            <div class="container">
+                <a href="pages/film-info.html"><div class="movie-slot">
+                    <img src="images/empty.jpg" alt="">
+                    <h3>Название фильма</h3>
+                </div></a>
+                <a href="pages/film-info.html"><div class="movie-slot">
+                    <img src="images/empty.jpg" alt="">
+                    <h3>Название фильма</h3>
+                </div></a>
+                <a href="pages/film-info.html"><div class="movie-slot">
+                    <img src="images/empty.jpg" alt="">
+                    <h3>Название фильма</h3>
+                </div></a>
+                <a href="pages/film-info.html"><div class="movie-slot">
+                    <img src="images/empty.jpg" alt="">
+                    <h3>Название фильма</h3>
+                </div></a>
+            </div>
+        </div>
+
+
+    </body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>KinoCMS - User Edit</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/sidebar.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/film-info.css">
+        <link rel="stylesheet" th:href="@{/css/user-edit.css}">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    </head>
+
+    <body>
+
+        <div th:insert="header :: header"></div>
+        <div th:insert="sidebar :: sidebar"></div>
+
+        <div class="main">
+            <form method="post" th:object="${user}">
+                <div class="row" style="margin-top: 20px">
+                    <p>Имя</p>
+                    <input type="text" name="name" th:value="${user.name}">
+                    <div style="width: 30px"></div>
+                    <p>Язык</p>
+                    <div style="margin: 0; padding: 0;">
+                        <input type="radio" name="lang">Русский
+                        <input type="radio" name="lang">Украинский
+                    </div>
+                </div>
+                <div class="row">
+                    <p>Фамилия</p>
+                    <input type="text" name="surname" th:value="${user.surname}">
+                    <div style="width: 30px"></div>
+                    <p>Пол</p>
+                    <div style="margin: 0; padding: 0;">
+                        <input type="radio" name="gender" th:value="MALE" th:checked="${user.isMale()}">Мужской
+                        <input type="radio" name="gender" th:value="FEMALE" th:checked="${user.isFemale()}">Женский
+                    </div>
+                </div>
+                <div class="row">
+                    <p>Псевдоним</p>
+                    <input type="text" name="alias" th:value="${user.alias}">
+                    <div style="width: 30px"></div>
+                    <p>Телефон</p>
+                    <input type="text" name="phone_number" th:value="${user.phone_number}">
+                </div>
+                <div class="row">
+                    <p>E-mail</p>
+                    <input type="text" name="email" th:value="${user.email}">
+                    <div style="width: 30px"></div>
+                    <p>Дата рождения</p>
+                    <input type="date" th:value="${user.birth_date}" name="birth_date" id="birth_date">
+                </div>
+                <div class="row">
+                    <p>Адрес</p>
+                    <input type="text" name="address" placeholder="Loveland, Colorado(CO), 80538">
+                    <div style="width: 30px"></div>
+                    <p>Город</p>
+                    <select th:field="*{city}">
+                        <option value="">Выберите город</option>
+                        <option th:selected="${user.city} == 'Одесса'" value="Одесса">Одесса</option>
+                        <option th:selected="${user.city} == 'Киев'" value="Киев">Киев</option>
+                        <option th:selected="${user.city} == 'Львов'" value="Львов">Львов</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <p>Пароль</p>
+                    <input type="text" placeholder="********">
+                    <div style="width: 30px"></div>
+                    <p>Повторить пароль</p>
+                    <input type="text" placeholder="********">
+                </div>
+                <div class="row">
+                    <p>Номер карты</p>
+                    <input type="text" placeholder="1111 1111 1111 1111">
+                    <div style="width: 30px"></div>
+                </div>
+                <div class="row">
+                    <button type="submit">Сохранить</button>
+                </div>
+            </form>
+            
+        </div>
+    </body>
+
+</html>

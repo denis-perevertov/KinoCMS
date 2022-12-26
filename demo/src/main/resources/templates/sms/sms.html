@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>KinoCMS</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/banners.css">
+    <link rel="stylesheet" href="/css/sms.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="sms_script.js"></script>
+</head>
+<body>
+
+<div th:insert="header :: header"></div>
+<div th:insert="sidebar :: sidebar"></div>
+
+<div class="main">
+
+    <div class="container">
+
+        <div><h1>SMS</h1></div>
+
+        <div class="row">
+            <p style="font-weight: bold">Выбрать пользователей</p>
+
+            <div>
+                <input type="radio" name="users_sms" id="all_users_sms" checked onclick="disable()">
+                <label for="all_users_sms">Все пользователи</label></div>
+            <div>
+                <input type="radio" name="users_sms" id="random_users_sms" value="2" onclick="enable()">
+                <label for="random_users_sms">Выборочно</label>
+            </div>
+            <form action="/sms/users" method="get">
+                <button type="submit" id="users_check" disabled>Выбрать пользователей</button>
+            </form>
+        </div>
+
+        <div class="row">
+
+            <p style="font-weight: bold">Текст SMS</p>
+
+        </div>
+
+
+        <div class="row">
+
+            <textarea name="sms_text" id="sms_text" cols="70" rows="10" placeholder="Введите текст"></textarea>
+            <div>
+                <p style="font-weight: bold" id="sms_count">Кол-во SMS: </p>
+                <p style="font-weight: bold" id="send_percent">Рассылка выполнена на: </p>
+            </div>
+
+        </div>
+
+        <div style="display: flex; justify-content: center; padding: 20px;">
+
+            <button onclick="smsSend()">Начать рассылку</button>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+
+        <div><h1>E-Mail</h1></div>
+
+        <div class="row">
+            <p style="font-weight: bold">Кому отсылать e-mail: </p>
+
+            <div>
+                <input type="radio" name="users_email" id="all_users_email" checked onclick="disableEmail()">
+                <label for="all_users_email">Все пользователи</label></div>
+            <div>
+                <input type="radio" name="users_email" id="random_users_email" onclick="enableEmail()">
+                <label for="random_users_email">Выборочно</label>
+            </div>
+
+            <button id="users_check_email" disabled>Выбрать пользователей</button>
+        </div>
+
+        <div class="row" style="justify-content: space-between">
+            <div>
+                <p style="display: inline-block; padding-right: 20px; font-weight: bold">Загрузить HTML-письмо</p>
+                <button type="button" onclick="loadHTML()">Загрузить</button>
+                <input type="file" id="html_download" style="display: none">
+                <p id="html" style="font-weight: bold">Загружен файл: </p>
+                <p id="template" style="font-weight: bold">Шаблон используемый в текущей рассылке: </p>
+                <p id="email_count" style="font-weight: bold">Кол-во писем: </p>
+                <p id="email_percent" style="font-weight: bold">Рассылка выполнена на: </p>
+            </div>
+            <div class="container" style="padding-bottom: 80px; padding-left: 30px; padding-right: 30px;">
+                <p>Список последних загруженных шаблонов</p>
+                <div id="template_list">
+                    <input type="radio" name="template" onclick="setTemplate(this)" value="Новый товар на 05.02.2011">Новый товар на 05.02.2011<br>
+                    <input type="radio" name="template" onclick="setTemplate(this)" value="Новый товар на 05.02.2011">Новый товар на 05.02.2011<br>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; padding: 20px;">
+
+            <button onclick="emailSend()">Начать рассылку</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    function enable() {
+        console.log(21321);
+        const btn = document.querySelector('#users_check');
+        btn.disabled = false;
+    }
+
+    function disable() {
+        const btn = document.querySelector('#users_check');
+        btn.disabled = true;
+    }
+
+    function enableEmail() {
+        console.log(21321);
+        const btn = document.querySelector('#users_check_email');
+        btn.disabled = false;
+    }
+
+    function disableEmail() {
+        const btn = document.querySelector('#users_check_email');
+        btn.disabled = true;
+    }
+
+    function smsSend() {
+
+        const user_count = 10000;
+        let sent_sms_count = 0;
+        let new_sms_count = 0;
+
+        let initial_text1 = 'Кол-во SMS: ';
+        let initial_text2 = 'Рассылка выполнена на: ';
+
+        for(let i = 1; i <= 10; i++) {
+
+            setTimeout(function(){
+                new_sms_count = Math.floor(Math.random() * 157 + 94);
+                console.log('new count ' + new_sms_count);
+                (sent_sms_count + new_sms_count) > user_count ? sent_sms_count = 10000 : sent_sms_count += new_sms_count;
+                console.log('sent ' + sent_sms_count);
+                document.getElementById("sms_count").innerText = initial_text1 + sent_sms_count;
+                document.getElementById("send_percent").innerText = initial_text2 + (i*10) + '%';
+            },500);
+        }
+
+    }
+
+    function emailSend() {
+
+        const user_count = 10000;
+        let sent_sms_count = 0;
+        let new_sms_count = 0;
+
+        let initial_text1 = 'Кол-во писем: ';
+        let initial_text2 = 'Рассылка выполнена на: ';
+
+        for(let i = 1; i <= 10; i++) {
+
+            setTimeout(function(){
+                new_sms_count = Math.floor(Math.random() * 157 + 94);
+                console.log('new count ' + new_sms_count);
+                (sent_sms_count + new_sms_count) > user_count ? sent_sms_count = 10000 : sent_sms_count += new_sms_count;
+                console.log('sent ' + sent_sms_count);
+                document.getElementById("email_count").innerText = initial_text1 + sent_sms_count;
+                document.getElementById("email_percent").innerText = initial_text2 + (i*10) + '%';
+            },500);
+        }
+
+    }
+
+    function loadHTML() {
+        let html_input = document.getElementById("html_download");
+        let initialText = 'Загружен файл: ';
+
+        html_input.addEventListener('change', function() {
+
+            const curFiles = html_input.files;
+
+            if (curFiles.length > 0) {
+
+                document.getElementById('html').innerText = initialText + curFiles[0].name;
+                document.getElementById('html').style.color = 'red';
+
+                document.getElementById('template_list').innerHTML += '<input type="radio" name="template" onclick="setTemplate(this)" value="'
+                + curFiles[0].name + '">' + curFiles[0].name + '<br>';
+
+            }
+
+        });
+
+        html_input.click();
+    }
+
+    function setTemplate(radio) {
+        let template_name = radio.value;
+        let text = 'Шаблон используемый в текущей рассылке: '
+
+        document.getElementById('template').innerText = text + ' ' + template_name;
+    }
+
+</script>
+
+</body>
+
+</html>

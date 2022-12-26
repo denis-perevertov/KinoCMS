@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" th:href="@{/css/main_page_17.css}">
+  <link rel="stylesheet" th:href="@{/css/main_h_f1.css}">
+  <title>KinoCMS - Главная страница</title>
+</head>
+<body>
+
+
+<div th:insert="main_h :: main_header"></div>
+
+<div class="main">
+
+  <h1>Смотрите сегодня</h1>
+
+  <div class="movie-list">
+
+    <div class="movie" th:each="movie : ${movies}">
+      <img th:src="@{/images/movies/{url}(url=${movie.main_picture})}" alt="">
+      <a th:href="@{/movies/{id}(id=${movie.id})}"><h4 th:text="${movie.name}"></h4></a>
+      <a th:href="@{/movies/{id}(id=${movie.id})}"><button class="ticket">Купить билет</button></a>
+    </div>
+
+  </div>
+
+  <br>
+
+  <hr style="color: black; background-color: black; height: 1px;">
+
+  <h1>Смотрите скоро</h1>
+
+  <br>
+
+  <hr style="color: black; background-color: black; height: 1px;">
+
+  <h1>Новости и акции</h1>
+
+  <img class="offers" src="/images/empty.jpg" alt="">
+
+  <div class="ad">Реклама</div>
+
+</div>
+
+<div th:insert="main_f :: footer"></div>
+
+</body>
+</html>

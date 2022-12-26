@@ -1,0 +1,59 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 0;
+    justify-content: center;
+    flex-basis: 100px;
+}
+
+.container img:not(.plus) {
+    box-shadow: 1px 1px 10px grey;
+    max-width: 250px;
+    max-height: 200px;
+    min-width: 100px;
+    min-height: 100px;
+}
+
+.plus { 
+    width: 100px;
+    height: 100px;
+    padding-top: 13%;
+}
+
+.theater-slot {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-top: 35px;
+}
+
+.theater-slot i {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 30px;
+    margin-right: -10px;
+    z-index: 1;
+}
+
+.container a:not(.delete-link) {
+    width: 24%;
+    text-decoration: none;
+    color: black;
+}
+
+.container a:not(.delete-link):hover {
+    text-decoration: underline;
+    color: rgb(82, 12, 23);    
+    box-shadow: 0px 0px 3px black;
+    transition: box-shadow 0.2s;
+}

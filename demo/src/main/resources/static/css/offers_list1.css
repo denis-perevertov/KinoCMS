@@ -1,0 +1,104 @@
+h4 {
+    margin: 0;
+    padding-block: 5px;
+    color: rgb(0, 142, 250);
+    text-decoration: underline;
+}
+
+.banner img{
+    width: 100%;
+    aspect-ratio: 8 / 3;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    column-gap: 100px;
+    row-gap: 20px;
+}
+
+.content h2, h4 {
+    text-align: left;
+}
+
+.content img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border: 1px solid black;
+}
+
+.content a {
+    font-weight: bold;
+    padding-top: 10px;
+    color: blue;
+}
+
+.content a:hover {
+    color: rgb(0, 153, 255);
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: white;
+    transition: color 0.2s;
+}
+
+.offers-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.offer p {
+    font-size: 14px;
+}
+
+.ad {
+    margin-top: 50px;
+    height: 60vh;
+    background-color: gray;
+    border: 2px dashed black;
+    margin-right: 20px;
+}
+
+.tags {
+    display: flex;
+    column-gap: 5px;
+}
+
+.tags p {
+    background-color: purple;
+    padding: 5px;
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+.tags p:first-of-type {
+    background-color: black;
+}
+
+.tag {
+    display: inline-block;
+    background-color: purple;
+    padding: 5px;
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.offer * {
+    padding-block: 5px;
+}
+
+.offer-info {
+    display: flex;
+    margin-top: 30px;
+}
+
+.offer-info img {
+    width: 300px;
+    margin-right: 40px;
+}

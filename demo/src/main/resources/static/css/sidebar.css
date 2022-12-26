@@ -1,0 +1,71 @@
+.sidebar {
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    bottom: 0;
+    width: 15vw;
+    padding-top: 8px;
+    margin-top: 4px;
+    background: rgb(108,108,117);
+    background: linear-gradient(0deg, rgba(108,108,117,1) 0%, rgba(36,36,46,1) 57%);
+    border: 1px solid rgb(8, 8, 8);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    font-family: Montserrat, 'Segoe UI', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar-element {
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    align-items: center;
+    position: relative;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: background-color, 0.3s;
+}
+
+.sidebar-element i {
+    width: 34px;
+}
+
+.sidebar-element:hover {
+    background-color: rgb(134, 134, 134);
+}
+
+.sidebar .active {
+    
+    background-color: rgb(166, 165, 165);
+    color: rgb(29, 4, 82);
+    border: 2px solid rgba(10,10,10,0.7);
+    box-shadow: 1px 1px 5px rgb(255, 255, 255);
+    font-weight: 600;
+    text-decoration: underline;
+    
+}
+/*
+.sidebar .active::after {
+    content: "";
+    width: 38px;
+    height: 38px;
+    display: inline-block;
+    position: absolute;
+    background: transparent;
+    background-color: rgb(166, 165, 165);
+    right: -40px;
+    top: 7px;
+    transform: translateX(-1rem) rotate(45deg); 
+    border-right: 3px solid black;
+    border-top: 3px solid black;
+}
+
+

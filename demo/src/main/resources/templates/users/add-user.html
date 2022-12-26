@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>KinoCMS - New User</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/sidebar.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/film-info.css">
+  <link rel="stylesheet" th:href="@{/css/user-edit.css}">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+<div th:insert="header :: header"></div>
+<div th:insert="sidebar :: sidebar"></div>
+
+<div class="main">
+
+  <div style="height: 30px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px; background-color: green; border: 4px double black; border-radius: 15px; color: white; font-weight: bold; font-family: 'Segoe UI';" th:if="${success_message != null}">
+    <i class="fa-solid fa-circle-check fa-2xl" style="margin-right: 15px"></i>
+    <h3 th:text="${success_message}" style="padding: 2px; margin: 0; display: inline-block; text-decoration: underline; text-underline-position: under;"></h3>
+  </div>
+
+  <div style="height: 30px; padding-left: 20px; background-color: red; border: 4px double black; border-radius: 15px; color: white; font-weight: bold; font-family: 'Segoe UI';" th:if="${error_message != null}">
+    <i class="fa-solid fa-circle-xmark fa-2xl" style="margin-right: 15px"></i>
+    <h3 th:text="${error_message}" style="display: inline-block; text-decoration: underline; text-underline-position: under;"></h3>
+  </div>
+
+  <h1 style="text-align: center; margin-bottom: 15px;">Кабинет клиента</h1>
+  <form method="post" th:action="@{/users/add}" th:object="${user}">
+    <div class="row" style="margin-top: 20px">
+      <p>Имя</p>
+      <input type="text" name="name">
+      <div style="width: 30px"></div>
+      <p>Язык</p>
+      <div style="margin: 0; padding: 0;">
+        <input type="radio" name="lang">Русский
+        <input type="radio" name="lang">Украинский
+      </div>
+    </div>
+    <div class="row">
+      <p>Фамилия</p>
+      <input type="text" name="surname">
+      <div style="width: 30px"></div>
+      <p>Пол</p>
+      <div style="margin: 0; padding: 0;">
+        <input type="radio" name="gender" value="MALE">Мужской
+        <input type="radio" name="gender" value="FEMALE">Женский
+      </div>
+    </div>
+    <div class="row">
+      <p>Псевдоним</p>
+      <input type="text" name="alias">
+      <div style="width: 30px"></div>
+      <p>Телефон</p>
+      <input type="text" name="phone_number">
+    </div>
+    <div class="row">
+      <p>E-mail</p>
+      <input type="text" name="email">
+      <div style="width: 30px"></div>
+      <p>Дата рождения</p>
+      <input type="date" name="birth_date" id="birth_date">
+    </div>
+    <div class="row">
+      <p>Адрес</p>
+      <input type="text" name="address">
+      <div style="width: 30px"></div>
+      <p>Город</p>
+      <select th:field="*{city}">
+        <option value="">Выберите город</option>
+        <option th:selected="${user.city} == 'Одесса'" value="Одесса">Одесса</option>
+        <option th:selected="${user.city} == 'Киев'" value="Киев">Киев</option>
+        <option th:selected="${user.city} == 'Львов'" value="Львов">Львов</option>
+      </select>
+    </div>
+    <div class="row">
+      <p>Пароль</p>
+      <input type="text">
+      <div style="width: 30px"></div>
+      <p>Повторить пароль</p>
+      <input type="text">
+    </div>
+    <div class="row">
+      <p>Номер карты</p>
+      <input type="text">
+      <div style="width: 30px"></div>
+    </div>
+    <div class="row">
+      <button type="submit">Сохранить</button>
+    </div>
+  </form>
+
+</div>
+</body>
+
+</html>

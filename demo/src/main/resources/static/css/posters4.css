@@ -1,0 +1,56 @@
+.main {
+    padding: 10px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 20px;
+
+    align-items: start;
+}
+
+.poster {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    row-gap: 5px;
+}
+
+.poster img {
+    width: 140px;
+    height: 200px;
+}
+
+.poster a {
+    padding: 0;
+}
+
+button {
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    background-color: gold;
+    color: white;
+    font-weight: bold;
+    font-family: Arial;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(255, 204, 102);
+    box-shadow: 0px 0px 5px white;
+    transition: box-shadow 0.3s, background-color 0.3s;
+}
+
+span {
+    text-align: center;
+}
+
+.date {
+    color: red;
+    box-shadow: 0px 0px 2px black;
+    font-weight: bold;
+    padding-inline: 1px;
+    text-decoration: underline;
+}

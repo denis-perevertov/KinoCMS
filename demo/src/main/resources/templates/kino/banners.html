@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>KinoCMS - Баннеры</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/sidebar.css">
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/banners.css">
+        <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+        <script src="js/stuff.js"></script>
+    </head>
+    <body>
+        
+        <div class="header">
+            <div class="left">
+                <img src="images/logo.png" alt="">
+            </div>
+            <div class="right">
+                <i class="fa-solid fa-user-secret fa-2xl"></i>
+                <p>Администратор</p>
+                <i class="fa-solid fa-power-off fa-2xl"></i>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            
+            <a href="admin.html"><div class="sidebar-element">Статистика</div></a>
+            <div class="sidebar-element active">Баннера/Слайдеры</div>
+            <a href="movies.html"><div class="sidebar-element">Фильмы</div></a>
+            <a href="theaters.html"><div class="sidebar-element">Кинотеатры</div></a>
+            <a href="news.html"><div class="sidebar-element">Новости</div></a>
+            <a href="offers.html"><div class="sidebar-element">Акции</div></a>
+            <a href="pages.html"><div class="sidebar-element">Страницы</div></a>
+            <a href="users.html"><div class="sidebar-element">Пользователи</div></a>
+            <a href="sms.html"><div class="sidebar-element">Рассылка</div></a>
+            
+        </div>
+
+        <div class="main" style="text-align: center">
+            <h1>На главной верх</h1>
+            <div class="container">
+                <div class="row1">
+                    <p>Размер: 1000х190</p>
+                    <i class="fa-solid fa-toggle-on fa-2xl" style="text-align: right; padding-right: 25px;"></i>
+                </div>
+                <div class="row2" id="row2">
+                    <div class="col">
+                        <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
+                        <div><button id="get_file">Добавить</button><input type="file" id="my_file" style="display: none;"></div>
+                        <div><input type="text" placeholder="URL"></div>
+                        <div><input type="text" placeholder="Текст"></div>
+                    </div>
+                    <div class="col">
+                        <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
+                        <div><button>Добавить</button></div>
+                        <div><input type="text" placeholder="URL"></div>
+                        <div><input type="text" placeholder="Текст"></div>
+                    </div>
+                    <div class="col">
+                        <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
+                        <div><button>Добавить</button></div>
+                        <div><input type="text" placeholder="URL"></div>
+                        <div><input type="text" placeholder="Текст"></div>
+                    </div>
+                    <div class="col">
+                        <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
+                        <div><button>Добавить</button></div>
+                        <div><input type="text" placeholder="URL"></div>
+                        <div><input type="text" placeholder="Текст"></div>
+                    </div>
+                    <div class="col">
+                        <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
+                        <div><button>Добавить</button></div>
+                        <div><input type="text" placeholder="URL"></div>
+                        <div><input type="text" placeholder="Текст"></div>
+                    </div>
+
+                    <button id="insert_photo">Добавить фото</button>
+                </div>
+                <div class="row3">
+                    <div class="left">
+                        <p>Скорость вращения</p>
+                        <select name="speed" id="turn-speed-list">
+                            <option value="5">5 с</option>
+                            <option value="10">10 с</option>
+                            <option value="15">15 с</option>
+                            <option value="20">20 с</option>
+                        </select>
+                    </div>
+                    <div class="right">
+                        <button>Сохранить</button>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <h1>Сквозной баннер на заднем фоне</h1>
+            <div class="container2">
+                
+                <div class="row1">
+                    <p>Размер: 2000х3000</p>
+                </div>
+
+                <div class="row2">
+                    <div class="col1">
+                        <div><input type="radio" name="bg">Фото на фоне</div>
+                        <div><input type="radio" name="bg">Просто фон</div>
+                    </div>
+                    <div class="col2"><img src="images/empty.jpg" alt=""></div>
+                    <div class="col3">
+                        <button style="margin-right: 20px; height: 40px; width: 150px;">Добавить</button>
+                        <button style="height: 40px; width: 150px;">Удалить</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <h1>На главной новости акции</h1>
+            <div class="container">
+                <div class="row1">
+                    <p>Размер: 1000х190</p>
+                    <i class="fa-solid fa-toggle-on fa-2xl" style="text-align: right; padding-right: 25px;"></i>
+                </div>
+                <div class="row2">
+                    <div class="col">
+                        <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
+                        <div><button>Добавить</button></div>
+                        <div><input type="text" placeholder="URL"></div>
+                        <div><input type="text" placeholder="Текст"></div>
+                    </div>
+                    <div class="col">
+                        <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
+                        <div><button>Добавить</button></div>
+                        <div><input type="text" placeholder="URL"></div>
+                        <div><input type="text" placeholder="Текст"></div>
+                    </div>
+                    <div class="col">
+                        <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
+                        <div><button>Добавить</button></div>
+                        <div><input type="text" placeholder="URL"></div>
+                        <div><input type="text" placeholder="Текст"></div>
+                    </div>
+                    <div class="col">
+                        <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
+                        <div><button>Добавить</button></div>
+                        <div><input type="text" placeholder="URL"></div>
+                        <div><input type="text" placeholder="Текст"></div>
+                    </div>
+                    <div class="col">
+                        <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
+                        <div><button>Добавить</button></div>
+                        <div><input type="text" placeholder="URL"></div>
+                        <div><input type="text" placeholder="Текст"></div>
+                    </div>
+
+                    <button>Добавить фото</button>
+                </div>
+                <div class="row3">
+                    <div class="left">
+                        <p>Скорость вращения</p>
+                        <select name="speed" id="turn-speed-list">
+                            <option value="5">5 с</option>
+                            <option value="10">10 с</option>
+                            <option value="15">15 с</option>
+                            <option value="20">20 с</option>
+                        </select>
+                    </div>
+                    <div class="right">
+                        <button>Сохранить</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        
+        <script>
+            document.getElementById('get_file').onclick = function() {
+                document.getElementById('my_file').click();
+            };
+
+            document.getElementById('insert_photo').onclick = function() {
+                      
+                document.getElementById('row2').innerHTML += '<div class="col"><div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div><div><button>Добавить</button></div>'
+                + '<div><input type="text" placeholder="URL"></div><div><input type="text" placeholder="Текст"></div></div>';
+            }
+        </script>
+
+    </body>
+
+</html>

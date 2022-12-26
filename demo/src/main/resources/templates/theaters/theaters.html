@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>KinoCMS</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/sidebar.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/theaters2.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        
+    </head>
+    <body>
+
+        <div th:insert="header :: header"></div>
+        <div th:insert="sidebar :: sidebar"></div>
+
+        <div class="main" style="text-align: center;">
+            <h1>Список кинотеатров</h1>
+
+            <div class="container">
+
+                <a th:each="theater : ${theaters}" th:href="'/theaters/' + ${theater.theater_id} + '/edit'">
+                    <div class="theater-slot">
+                        <img th:src="@{/images/theaters/{id}/{picture_url}(id=${theater.theater_id}, picture_url=${theater.logo})}" src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl" style="cursor: pointer" th:href="'/theaters/' + ${theater.theater_id} + '/edit'"></i>
+                        <h2 th:text="${theater.name}">Default name</h2>
+                    </div>
+                </a>
+
+
+                <a href="/theaters/add">
+                    <div class="theater-slot">
+                        <img class="plus" src="images/plus.png" alt="">
+                        <h2>Добавить</h2>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </body>
+
+</html>

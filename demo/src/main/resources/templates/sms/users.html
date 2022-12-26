@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>KinoCMS - Users</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/sidebar.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/users.css">
+        <link rel="stylesheet" href="/css/tables.css">
+        <link rel="stylesheet" href="/css/pagination.css">
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        
+        <div th:insert="header :: header"></div>
+        <div th:insert="sidebar :: sidebar"></div>
+
+
+        <div class="main">
+
+            <div style="text-align: right;">
+                <input type="text" placeholder="Поиск" id="search">
+                <button style="display: inline-block; margin-right: 10%" id="search_button">Поиск</button>
+            </div>
+
+            <div class="table">
+                
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>ID</th>
+                            <th>Дата регистрации</th>
+                            <th>День рождения</th>
+                            <th>Email</th>
+                            <th>Телефон</th>
+                            <th>ФИО</th>
+                            <th>Псевдоним</th>
+                            <th>Город</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr th:each="user : ${users}">
+                            <td><input type="checkbox"></td>
+                            <td th:text="${user.user_id}"></td>
+                            <td th:text="${{user.registration_date}}"></td>
+                            <td th:text="${{user.birth_date}}"></td>
+                            <td th:text="${user.email}"></td>
+                            <td th:text="${user.phone_number}"></td>
+                            <td th:text="${user.name} + ' ' + ${user.surname}"></td>
+                            <td th:text="${user.alias}"></td>
+                            <td th:text="${user.city}"></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+            </div>
+
+            <div class="pagination" id="pagination"></div>
+
+            <button type="submit" style="margin: 20px auto; padding: 15px 10px;">Отправить</button>
+
+            <script src="pagination_script1.js"></script>
+
+        </div>
+
+
+    </body>
+
+</html>

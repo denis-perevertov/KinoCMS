@@ -1,0 +1,63 @@
+.banner img{
+    width: 100%;
+    aspect-ratio: 8 / 3;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    column-gap: 30px;
+    row-gap: 20px;
+}
+
+.content h2, h4 {
+    text-align: center;
+}
+
+.content img {
+    width: 100%;
+    border: 2px solid black;
+    max-height: 200px;
+    aspect-ratio: 4 / 3;
+}
+
+.cinema-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 30px;
+
+}
+
+.ad {
+    margin-top: 50px;
+    height: 60vh;
+    background-color: gray;
+    border: 2px dashed black;
+    margin-right: 30px;
+}
+
+.theater {
+    display: flex;
+    flex-direction: column;
+}
+
+.theater p {
+    font-size: 20px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    font-family: 'Segoe UI';
+}
+
+.theater a {
+    padding: 20px;
+}
+
+.theater a:hover {
+    background-color: lightgray;
+    transition: background-color 0.4s;
+}

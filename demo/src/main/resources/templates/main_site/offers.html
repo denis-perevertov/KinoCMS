@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" th:href="@{/css/main_page_17.css}">
+  <link rel="stylesheet" th:href="@{/css/main_h_f1.css}">
+  <link rel="stylesheet" th:href="@{/css/offers_list1.css}">
+  <title>KinoCMS</title>
+</head>
+<body>
+
+<div th:insert="main_h :: main_header"></div>
+
+<div class="main">
+
+  <div class="banner">
+    <img src="../images/offers.png" alt="">
+  </div>
+
+  <div class="content">
+
+    <div>
+
+      <h2 style="text-align: center;">Акции и скидки</h2>
+
+      <div class="offers-list">
+
+        <div class="offer" th:each="offer : ${offers}">
+          <img th:src="@{/images/offers/{id}/{url}(id=${offer.id}, url=${offer.main_picture})}" alt="">
+          <a th:href="'/offers/' + ${offer.id}"><span th:text="${offer.name}">Ночные цены на все сеансы</span></a>
+          <div class="tags">
+            <p th:text="${offer.date}">26.05.2016</p>
+            <p>Dreamtown</p>
+            <p>Gulliver</p>
+          </div>
+          <p th:text="${offer.description}">Lorem ipsum dolor sit amet</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="ad">Блок рекламы</div>
+
+  </div>
+
+</div>
+
+<div th:insert="main_f :: footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>KinoCMS</title>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/sidebar.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/news.css">
+        <link rel="stylesheet" href="/css/tables.css">
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        
+    </head>
+    <body>
+
+        <div th:insert="header :: header"></div>
+        <div th:insert="sidebar :: sidebar"></div>
+
+        <div class="main">
+            <div style="text-align: right;">
+                <h1 style="display: inline-block; padding-right: 30%">Список акций</h1>
+                <form method="get" action="/offers/add" style="display: inline-block">
+                    <button style="display: inline-block; margin-right: 10%; width: 180px;"><i class="fa-solid fa-plus fa-lg"></i>Создать акцию</button>
+                </form>
+            </div>
+
+            <div class="table">
+                
+                <table>
+                    <tr>
+                        <th>Название</th>
+                        <th>Дата создания</th>
+                        <th>Статус</th>
+                    </tr>
+
+                    <tr th:each="offer : ${offers}">
+                        <td th:text="${offer.name}"></td>
+                        <td th:text="${offer.name}"></td>
+                        <td>ВКЛ</td>
+                        <td class="icons">
+                            <a style="text-decoration: none" th:href="'/offers/' + ${offer.id} + '/edit'"><i class="fa-solid fa-pen-to-square fa-2xl"></i>
+                                <span style="margin-right: 15px; font-weight: bold">Редактировать</span></a>
+                            <a style="text-decoration: none" th:href="'/offers/' + ${offer.id} + '/delete'"><i class="fa-solid fa-trash fa-2xl delete-icon" style="color: red"></i>
+                                <span style="color: red; font-weight: bold">Удалить</span></a>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+            
+        </div>
+
+
+    </body>
+
+</html>

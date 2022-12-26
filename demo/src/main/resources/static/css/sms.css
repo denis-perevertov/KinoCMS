@@ -1,0 +1,35 @@
+.container {
+    margin-top: 20px;
+}
+
+.container h1 {
+    text-align: center;
+}
+
+.container button { 
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+}
+
+.container button:hover {
+    background-color: aliceblue;
+}
+.container button:active {
+    background-color: rgb(207, 226, 255);
+    color: white;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    column-gap: 60px;
+    flex: 1;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+

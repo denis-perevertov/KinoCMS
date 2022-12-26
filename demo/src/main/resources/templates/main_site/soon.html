@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" th:href="@{/css/main_page_17.css}">
+  <link rel="stylesheet" th:href="@{/css/main_h_f1.css}">
+  <link rel="stylesheet" th:href="@{/css/posters4.css}">
+  <title>KinoCMS - Афиша</title>
+</head>
+
+<body>
+
+<div th:insert="main_h :: main_header"></div>
+
+<div class="main">
+
+  <div class="poster" th:each="movie : ${movies}" th:if="${movie.release_date.isAfter(today)}">
+    <em>В кино с <span class="date" th:text="${#temporals.format(movie.release_date, 'dd.MM.yyyy')}">2022-01-01</span></em>
+    <img th:src="@{/images/movies/{url}(url=${movie.main_picture})}" alt="">
+    <span th:text="${movie.name}">Крутые стволы</span>
+    <form th:action="'/movies/' + ${movie.id}" method="get">
+      <button>КУПИТЬ</button>
+    </form>
+  </div>
+
+</div>
+
+<div th:insert="main_f :: footer"></div>
+
+</body>
+</html>

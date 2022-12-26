@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" th:href="@{/css/main_page_17.css}">
+  <link rel="stylesheet" th:href="@{/css/main_h_f1.css}">
+  <link rel="stylesheet" th:href="@{/css/theater_page.css}">
+  <title>KinoCMS</title>
+</head>
+<body>
+
+<div th:insert="main_h :: main_header"></div>
+
+<div class="main">
+
+  <div class="banner">
+    <img src="../images/empty.jpg" alt="">
+  </div>
+
+  <div class="content">
+
+    <div>
+      <div class="ad">Блок рекламы</div>
+
+      <div>
+        <h4>Количество залов: 6</h4>
+
+        <div class="hall-menu">
+          <div class="hall">Зал 1</div>
+          <div class="hall">Зал 2</div>
+          <div class="hall">Зал 3</div>
+          <div class="hall">Зал 4</div>
+          <div class="hall">Зал 5</div>
+          <div class="hall">Зал 6</div>
+        </div>
+      </div>
+
+      <div>
+        <h4>Смотреть сейчас: </h4>
+
+        <div class="seance-menu">
+          <div class="seance">Сеанс 1</div>
+          <div class="seance">Сеанс 2</div>
+          <div class="seance">Сеанс 3</div>
+          <div class="seance">Сеанс 4</div>
+          <div class="seance">Сеанс 5</div>
+          <div class="seance">Сеанс 6</div>
+        </div>
+
+      </div>
+
+      <button>Расписание всех сеансов</button>
+    </div>
+
+    <div class="details">
+      <div class="details-block">
+        <h2>Оскар</h2>
+      </div>
+      <div class="details-block">
+        <h2>Описание</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+      </div>
+      <div class="details-block">
+        <h2>Условия</h2>
+        <div class="conditions">
+          <div>
+            <h3>Детская комната</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+          </div>
+          <div>
+            <h3>VIP-зал</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+          </div>
+          <div>
+            <h3>Бар</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+          </div>
+          <div>
+            <h3>Попкорн-бар</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+          </div>
+          <div>
+            <h3>Магазин</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+          </div>
+          <div>
+            <h3>Подарочные сертификаты</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+          </div>
+        </div>
+      </div>
+      <div class="details-block" style="display: flex; flex-direction: column;">
+        <h2>ФОТОГАЛЕРЕЯ</h2>
+        <img src="../images/empty.jpg" alt="">
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div th:insert="main_f :: footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" th:href="@{/css/main_page_17.css}">
+  <link rel="stylesheet" th:href="@{/css/main_h_f1.css}">
+  <link rel="stylesheet" th:href="@{/css/schedule1.css}">
+  <title>KinoCMS - Main Page</title>
+</head>
+
+<body>
+
+<div th:insert="main_h :: main_header"></div>
+
+<div class="main">
+
+  <div class="filter">
+    <p>Показывать только:</p>
+
+    <div class="type">
+      <input type="checkbox" name="type" id="3D">
+      <label for="3D" name="movie_type" id="f">3D</label>
+    </div>
+    <div class="type">
+      <input type="checkbox" name="type" id="DBOX">
+      <label for="DBOX" name="movie_type" id="s">DBOX</label>
+    </div>
+    <div class="type">
+      <input type="checkbox" name="type" id="VIP">
+      <label for="VIP" name="movie_type" id="t">VIP</label>
+    </div>
+
+
+    <select name="cinema" id="cin">
+      <option value="">Кинотеатр</option>
+    </select>
+
+    <select name="date" id="date">
+      <option value="">Дата</option>
+    </select>
+
+    <select name="movie" id="movie">
+      <option value="">Фильм: все</option>
+    </select>
+
+    <select name="hall" id="hall">
+      <option value="">Зал: все</option>
+    </select>
+  </div>
+
+  <div class="content">
+
+    <div class="schedule">
+
+      <div class="day">
+
+        <div><p>24 июля, воскресенье</p></div>
+
+        <br>
+
+        <table>
+
+          <tr>
+            <th>Время</th>
+            <th>Фильм</th>
+            <th>Зал</th>
+            <th>Цена в грн</th>
+            <th>Бронировать</th>
+          </tr>
+
+          <tr>
+            <td>10:00</td>
+            <td>Світське життя</td>
+            <td>6</td>
+            <td>65</td>
+          </tr>
+
+          <tr>
+            <td>10:00</td>
+            <td>Геній</td>
+            <td>4</td>
+            <td>55</td>
+          </tr>
+
+          <tr>
+            <td>10:00</td>
+            <td>Льодовиковий період: Курс на зіткнення 3Д</td>
+            <td>1</td>
+            <td>70</td>
+          </tr>
+
+        </table>
+
+      </div>
+
+      <div class="day">
+
+        <div><p>25 июля, понедельник</p></div>
+
+        <br>
+
+        <table>
+
+          <tr>
+            <th>Время</th>
+            <th>Фильм</th>
+            <th>Зал</th>
+            <th>Цена в грн</th>
+            <th>Бронировать</th>
+          </tr>
+
+          <tr>
+            <td>10:00</td>
+            <td>Світське життя</td>
+            <td>6</td>
+            <td>65</td>
+          </tr>
+
+          <tr>
+            <td>10:00</td>
+            <td>Геній</td>
+            <td>4</td>
+            <td>55</td>
+          </tr>
+
+          <tr>
+            <td>10:00</td>
+            <td>Льодовиковий період: Курс на зіткнення 3Д</td>
+            <td>1</td>
+            <td>70</td>
+          </tr>
+
+        </table>
+
+      </div>
+
+    </div>
+
+
+    <div class="ad">
+      <h1>Блок рекламы</h1>
+    </div>
+  </div>
+
+
+
+</div>
+
+<div th:insert="main_f :: footer"></div>
+
+</body>
+
+</html>
