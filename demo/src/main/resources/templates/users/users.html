@@ -8,13 +8,14 @@
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/sidebar.css">
         <link rel="stylesheet" href="/css/header.css">
-        <link rel="stylesheet" href="/css/users.css">
-        <link rel="stylesheet" href="/css/tables.css">
-        <link rel="stylesheet" href="/css/pagination.css">
+        <link rel="stylesheet" href="/css/users2.css">
+        <link rel="stylesheet" href="/css/pagination2.css">
 
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery.fancytable/dist/fancyTable.min.js"></script>
 
     </head>
     <body>
@@ -25,28 +26,24 @@
 
         <div class="main">
 
-            <div style="text-align: right;">
-                <h1 style="display: inline-block; padding-right: 15%">Пользователи</h1>
-                <input type="text" placeholder="Поиск" id="search">
-                <button style="display: inline-block; margin-right: 10%" id="search_button" onclick="search()">Поиск</button>
-            </div>
+            <h1 style="text-align: center;" id="users_name">Пользователи</h1>
 
             <div class="table">
-                
-                <table id="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Дата регистрации</th>
-                            <th>День рождения</th>
-                            <th>Email</th>
-                            <th>Телефон</th>
-                            <th>ФИО</th>
-                            <th>Псевдоним</th>
-                            <th>Город</th>
 
-                        </tr>
-                    </thead>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Дата регистрации</th>
+                        <th>День рождения</th>
+                        <th>Email</th>
+                        <th>Телефон</th>
+                        <th>ФИО</th>
+                        <th>Псевдоним</th>
+                        <th>Город</th>
+                    </tr>
+                </table>
+
+                <table class="myTable" id="table">
 
                     <tbody>
                         <tr th:each="user : ${users}">
@@ -68,12 +65,30 @@
 
             </div>
 
-            <div class="pagination" id="pagination"></div>
-
-            <script src="pagination_script1.js"></script>
+            <div class="pagination"></div>
 
         </div>
 
+        <script type="text/javascript">
+
+        $(document).ready(function() {
+            $(".myTable").fancyTable({
+               pagination: true,
+               paginationElement: '.pagination',
+               perPage:7,
+               searchable:true,
+               globalSearch:true,
+               sortable:false,
+            });
+
+            let searchbar = document.getElementsByClassName('fancySearchRow')[0];
+            console.log(searchbar);
+            let tag = document.getElementById('users_name');
+            console.log(tag);
+            tag.parentNode.insertBefore(searchbar, tag.nextSibling);
+        });
+
+        </script>
 
     </body>
 

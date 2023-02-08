@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" th:href="@{/css/main_page_22.css}">
+  <link rel="stylesheet" th:href="@{/css/main_h_f2.css}">
+  <link rel="stylesheet" th:href="@{/css/news-list3.css}">
+  <link rel="stylesheet" th:href="@{/css/pages1.css}">
+  <title>KinoCMS</title>
+</head>
+<body>
+
+<div th:insert="main_h :: main_header"></div>
+
+<div class="main">
+
+  <div class="banner">
+    <img th:src="@{/images/pages/{id}/{url}(id=${page.id}, url=${page.main_picture})}" alt="">
+  </div>
+
+  <div class="content" style="padding-left: 20px; column-gap: 5px">
+
+    <div>
+
+      <h2 th:text="${page.name}" style="text-align: center">Контакты</h2>
+      <br>
+
+      <div th:each="theater : ${theaters}" class="theater-container">
+
+          <div>
+            <div style="display: flex; align-items: center; margin-bottom: 10px; justify-content: space-between; height: 8rem;">
+              <h2 style="padding-inline: 10%;" th:text="${theater.name}">DefaultName</h2>
+              <div>
+                <img class="theater-logo" th:src="@{/images/theaters/{id}/{url}(id=${theater.theater_id}, url=${theater.logo})}" alt="">
+              </div>
+            </div>
+
+            <img th:src="@{/images/theaters/{id}/{url}(id=${theater.theater_id}, url=${theater.banner_picture})}"
+                 onerror="this.onerror=null, this.src='/images/empty.jpg'" alt="">
+          </div>
+
+          <div>
+            <div style="display: flex; flex-direction: column;  height: 8rem; justify-content: center; margin-bottom: 10px;">
+              <p>Кинотеатр "<span th:text="${theater.name}">DefaultName</span>"</p>
+              <p>Одесса, проспект Академика Глушко, 11ж</p>
+              <p>Бронирование билетов: (048) 746-32-33, (048) 746-32-20</p>
+              <p>E-mail: goldduke@kino.odessa.ua</p>
+            </div>
+            <img src="/images/map.png" alt="">
+          </div>
+
+
+      </div>
+
+
+
+    </div>
+
+    <div>
+      <div class="ad">Блок рекламы</div>
+    </div>
+
+  </div>
+
+</div>
+
+<div th:insert="main_f :: footer"></div>
+
+</body>
+</html>

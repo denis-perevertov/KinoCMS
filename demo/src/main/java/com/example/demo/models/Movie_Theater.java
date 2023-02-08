@@ -3,7 +3,7 @@ package com.example.demo.models;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +32,6 @@ public class Movie_Theater {
     String seo_url, seo_title, seo_keywords, seo_descr;
 
     @OneToMany(mappedBy = "theater")
-    List<Hall> hallList = new ArrayList<>();
+    List<Hall> halls;
 
 }

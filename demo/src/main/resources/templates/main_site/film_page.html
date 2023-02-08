@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" th:href="@{/css/main_page_17.css}">
-  <link rel="stylesheet" th:href="@{/css/main_h_f1.css}">
-  <link rel="stylesheet" th:href="@{/css/film-page.css}">
-  <title>KinoCMS - Main Page</title>
+  <link rel="stylesheet" th:href="@{/css/main_page_22.css}">
+  <link rel="stylesheet" th:href="@{/css/main_h_f2.css}">
+  <link rel="stylesheet" th:href="@{/css/film-page3.css}">
+  <title th:text="'Фильм ' + ${movie.name}">KinoCMS - Main Page</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
 <div class="main">
 
   <div class="youtube-video">
-    Youtube Video
+    <iframe id="video" th:src="@{${movie.youtube_url}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 
   <div class="schedule">
@@ -64,13 +64,17 @@
       </div>
     </div>
 
-    <h2 style="text-align: center;">Москва</h2>
+    <h2 id="theater_name" style="text-align: center;">Москва</h2>
 
       <div class="cinema-schedule">
         <div class="time-block">
           <div class="time-block-row">
-            <h3 style="border: 1px solid black;"><b>16:40</b></h3>
-            <h3>3D</h3>
+            <div>
+              <h2>16:40</h2>
+            </div>
+            <div>
+              <h2 style="font-weight: normal">3D</h2>
+            </div>
           </div>
           <div class="time-block-row">
             <p style="border: 1px solid black;">Зал 1</p>
@@ -78,40 +82,88 @@
           </div>
         </div>
         <div class="time-block">
-          <p>16:40</p>
-          <p>3D</p>
-          <p>Зал 1</p>
-          <p>23/56/120</p>
+          <div class="time-block-row">
+            <div>
+              <h2>16:40</h2>
+            </div>
+            <div>
+              <h2 style="font-weight: normal">3D</h2>
+            </div>
+          </div>
+          <div class="time-block-row">
+            <p style="border: 1px solid black;">Зал 1</p>
+            <p>23/56/120</p>
+          </div>
         </div>
         <div class="time-block">
-          <p>16:40</p>
-          <p>3D</p>
-          <p>Зал 1</p>
-          <p>23/56/120</p>
+          <div class="time-block-row">
+            <div>
+              <h2>16:40</h2>
+            </div>
+            <div>
+              <h2 style="font-weight: normal">3D</h2>
+            </div>
+          </div>
+          <div class="time-block-row">
+            <p style="border: 1px solid black;">Зал 1</p>
+            <p>23/56/120</p>
+          </div>
         </div>
         <div class="time-block">
-          <p>16:40</p>
-          <p>3D</p>
-          <p>Зал 1</p>
-          <p>23/56/120</p>
+          <div class="time-block-row">
+            <div>
+              <h2>16:40</h2>
+            </div>
+            <div>
+              <h2 style="font-weight: normal">3D</h2>
+            </div>
+          </div>
+          <div class="time-block-row">
+            <p style="border: 1px solid black;">Зал 1</p>
+            <p>23/56/120</p>
+          </div>
         </div>
         <div class="time-block">
-          <p>16:40</p>
-          <p>3D</p>
-          <p>Зал 1</p>
-          <p>23/56/120</p>
+          <div class="time-block-row">
+            <div>
+              <h2>16:40</h2>
+            </div>
+            <div>
+              <h2 style="font-weight: normal">3D</h2>
+            </div>
+          </div>
+          <div class="time-block-row">
+            <p style="border: 1px solid black;">Зал 1</p>
+            <p>23/56/120</p>
+          </div>
         </div>
         <div class="time-block">
-          <p>16:40</p>
-          <p>3D</p>
-          <p>Зал 1</p>
-          <p>23/56/120</p>
+          <div class="time-block-row">
+            <div>
+              <h2>16:40</h2>
+            </div>
+            <div>
+              <h2 style="font-weight: normal">3D</h2>
+            </div>
+          </div>
+          <div class="time-block-row">
+            <p style="border: 1px solid black;">Зал 1</p>
+            <p>23/56/120</p>
+          </div>
         </div>
         <div class="time-block">
-          <p>16:40</p>
-          <p>3D</p>
-          <p>Зал 1</p>
-          <p>23/56/120</p>
+          <div class="time-block-row">
+            <div>
+              <h2>16:40</h2>
+            </div>
+            <div>
+              <h2 style="font-weight: normal">3D</h2>
+            </div>
+          </div>
+          <div class="time-block-row">
+            <p style="border: 1px solid black;">Зал 1</p>
+            <p>23/56/120</p>
+          </div>
         </div>
       </div>
   </div>
@@ -119,20 +171,14 @@
   <div class="movie-info">
 
     <div class="row1">
-      <img src="../images/empty.jpg" alt="">
+      <img style="margin: auto; max-height: 450px;" th:src="@{/images/movies/{url}(url=${movie.main_picture})}" alt="">
 
       <div class="movie-description">
-        <form action="/seance" method="get">
+        <form th:action="'/seance/' + ${movie.id}" method="get">
           <button>Купить билет</button>
         </form>
-        <h2>Неоновый демон</h2>
-        <p>«Индейцы – это русские, они пришли из России». От таких слов «эксперта» можно потерять дар речи и погрузиться в ступор.
-
-          Ну, тогда в связи с тем, что индейцы это "наши русские", то имена надо переделать современным россиянам.
-
-          И тогда они станут Рогозин «Порванное очко», Шойгу «Вороватый олень», Песков «Спятивший тукан», Пригожин «Рабочий рот», Кадыров «Дающая овца», Медведев «Синий еблан», Путин «Срущий в чемодан».
-
-          Кто-то не согласен?</p>
+        <h2 th:text="${movie.name}">DEF</h2>
+        <p th:text="${movie.description}">DEF</p>
       </div>
 
     </div>
@@ -141,23 +187,120 @@
     <div class="row1">
 
       <div class="movie-details">
-        <h2>инфа про фильм</h2>
+        <h2>Про фильм</h2>
+        <img style="height: 415px;" src="/images/film_info.png" alt="">
       </div>
 
       <div class="snapshot">
         <h2>Кадры и постеры</h2>
-        <img src="../images/empty.jpg" alt="">
+        <div th:if="${(movie.picture1 != '') && (movie.picture2 != '') && (movie.picture3 != '') && (movie.picture4 != '') && (movie.picture5 != '')}"
+             data-slideIndex="1" class="slideshow-container">
+
+          <div th:if="${(movie.picture1 != null) && (movie.picture1 != '')}" class="mySlides fade">
+            <img style="height: 400px"
+                 th:src="@{/images/movies/{url}(url=${movie.picture1})}"
+                 onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+          </div>
+
+          <div th:if="${(movie.picture2 != null) && (movie.picture2 != '')}" class="mySlides fade">
+            <img style="height: 400px"
+                 th:src="@{/images/movies/{url}(url=${movie.picture2})}"
+                 onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+          </div>
+
+          <div th:if="${(movie.picture3 != null) && (movie.picture3 != '')}" class="mySlides fade">
+            <img style="height: 400px"
+                 th:src="@{/images/movies/{url}(url=${movie.picture3})}"
+                 onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+          </div>
+
+          <div th:if="${(movie.picture4 != null) && (movie.picture4 != '')}" class="mySlides fade">
+            <img style="height: 400px"
+                 th:src="@{/images/movies/{url}(url=${movie.picture4})}"
+                 onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+          </div>
+
+          <div th:if="${(movie.picture5 != null) && (movie.picture5 != '')}" class="mySlides fade">
+            <img style="height: 400px"
+                 th:src="@{/images/movies/{url}(url=${movie.picture5})}"
+                 onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1, this.parentNode)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1, this.parentNode)">&#10095;</a>
+
+          <div class="dots" style="text-align:center">
+            <span th:if="${(movie.picture1 != null) && (movie.picture1 != '')}" class="dot" onclick="currentSlide(1, this.parentNode.parentNode)"></span>
+            <span th:if="${(movie.picture2 != null) && (movie.picture2 != '')}" class="dot" onclick="currentSlide(2, this.parentNode.parentNode)"></span>
+            <span th:if="${(movie.picture3 != null) && (movie.picture3 != '')}" class="dot" onclick="currentSlide(3, this.parentNode.parentNode)"></span>
+            <span th:if="${(movie.picture4 != null) && (movie.picture4 != '')}" class="dot" onclick="currentSlide(4, this.parentNode.parentNode)"></span>
+            <span th:if="${(movie.picture5 != null) && (movie.picture5 != '')}" class="dot" onclick="currentSlide(5, this.parentNode.parentNode)"></span>
+          </div>
+
+        </div>
       </div>
 
     </div>
 
   </div>
 
+  <div class="ad">
+    <span style="color: white; font-weight: bold; margin: auto; font-size: 20px;">БЛОК РЕКЛАМЫ</span>
+  </div>
+
 </div>
 
-<div class="ad"></div>
-
 <div th:insert="main_f :: footer"></div>
+
+<script>
+  let name = document.getElementById('theater_name');
+  let theater_list = document.getElementById('cinema');
+
+  name.innerText = theater_list.options[theater_list.selectedIndex].text;
+
+  theater_list.addEventListener('change', function() {
+    name.innerText = theater_list.options[theater_list.selectedIndex].text;
+  });
+
+  initialShowSlides();
+
+// Next/previous controls
+function plusSlides(n, container) {
+  let index = parseInt(container.dataset.slideindex) + n;
+  container.dataset.slideindex = index;
+  showSlides(index, container);
+}
+
+// Thumbnail image controls
+function currentSlide(n, container) {
+  showSlides(n, container);
+}
+
+function initialShowSlides() {
+    let containers = document.getElementsByClassName("slideshow-container");
+    for(let i = 0; i < containers.length; i++) {
+        showSlides(1, containers[i]);
+    }
+}
+
+function showSlides(n, container) {
+  let i;
+  let slides = container.getElementsByClassName("mySlides");
+  let dots = container.getElementsByClassName("dot");
+  if (n > slides.length) {n = 1; container.dataset.slideindex = 1;}
+  if (n < 1) {n = slides.length; container.dataset.slideindex = slides.length;}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[n-1].style.display = "block";
+  dots[n-1].className += " active";
+}
+</script>
+
+
 
 </body>
 </html>

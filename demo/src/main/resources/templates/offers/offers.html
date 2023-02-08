@@ -10,12 +10,15 @@
         <link rel="stylesheet" href="/css/sidebar.css">
         <link rel="stylesheet" href="/css/header.css">
         <link rel="stylesheet" href="/css/news.css">
-        <link rel="stylesheet" href="/css/tables.css">
+        <link rel="stylesheet" href="/css/tables2.css">
+        <link rel="stylesheet" href="/css/pagination2.css">
 
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery.fancytable/dist/fancyTable.min.js"></script>
+
     </head>
     <body>
 
@@ -31,17 +34,20 @@
             </div>
 
             <div class="table">
-                
+
                 <table>
                     <tr>
                         <th>Название</th>
                         <th>Дата создания</th>
                         <th>Статус</th>
                     </tr>
+                </table>
+                
+                <table class="myTable">
 
                     <tr th:each="offer : ${offers}">
                         <td th:text="${offer.name}"></td>
-                        <td th:text="${offer.name}"></td>
+                        <td th:text="${offer.date}"></td>
                         <td>ВКЛ</td>
                         <td class="icons">
                             <a style="text-decoration: none" th:href="'/offers/' + ${offer.id} + '/edit'"><i class="fa-solid fa-pen-to-square fa-2xl"></i>
@@ -54,10 +60,25 @@
                 </table>
 
             </div>
-            
+            <div class="pagination"></div>
+
         </div>
 
 
     </body>
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $(".myTable").fancyTable({
+               pagination: true,
+               paginationElement: '.pagination',
+               perPage:4,
+               searchable:false,
+               sortable:false
+            });
+        });
+
+    </script>
 
 </html>

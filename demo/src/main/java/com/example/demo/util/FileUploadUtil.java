@@ -1,27 +1,20 @@
 package com.example.demo.util;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.UUID;
 
 public class FileUploadUtil {
 
-    @Autowired
-    private static HttpServletRequest request;
+    @Value("${upload.path}")
+    private static String uploadPath;
 
-    public static void saveFile(String uploadDir, String fileName, MultipartFile picture) throws IOException, URISyntaxException {
+    public static void saveFile(String uploadDir, String fileName, MultipartFile picture) throws IOException {
 
         File uploadDirectory = new File(uploadDir);
 
@@ -30,37 +23,9 @@ public class FileUploadUtil {
         }
 
         if(!picture.isEmpty()) {
-            Files.copy(picture.getInputStream(), Paths.get(uploadDir + "/" + fileName), StandardCopyOption.REPLACE_EXISTING);
+            //Files.copy(picture.getInputStream(), Paths.get(uploadDir + "/" + fileName), StandardCopyOption.REPLACE_EXISTING);
+            picture.transferTo(new File(uploadDir + "/" + fileName));
         }
-
-
-//        if(picture != null) {
-//            File targetFile = new File(uploadDir + "/" + fileName);
-//
-//            if(targetFile.exists()) {
-//                targetFile.delete();
-//                picture.transferTo(targetFile);
-//            } else picture.transferTo(targetFile);
-//
-//        }
-//        URI uri = new URI("file://"+uploadDir);
-//        Path uploadPath = Paths.get(uri);
-//
-//        if (!Files.exists(uploadPath)) {
-//            Files.createDirectories(uploadPath);
-//        }
-//
-//        Path filePath = uploadPath.resolve(fileName);
-//
-//        try (InputStream inputStream = picture.getInputStream()) {
-//            if(Files.exists(filePath)) {
-//                Files.delete(filePath);
-//                Files.copy(inputStream, filePath);
-//            } else {
-//                Files.copy(inputStream, filePath);
-//            }
-//        } catch (IOException ioe) {
-//        }
 
     }
 }

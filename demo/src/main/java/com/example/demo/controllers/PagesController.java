@@ -1,8 +1,6 @@
 package com.example.demo.controllers;
 
 
-import com.example.demo.models.News;
-import com.example.demo.models.Offer;
 import com.example.demo.models.Page;
 import com.example.demo.repo.PageRepository;
 import com.example.demo.util.FileUploadUtil;
@@ -15,14 +13,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequestMapping("/pages")
+@SuppressWarnings("unused")
 public class PagesController {
 
     @Autowired
@@ -99,7 +96,8 @@ public class PagesController {
 
     @PostMapping("/{id}/edit")
     public String editPageSubmit(@PathVariable Long id,
-                                 @ModelAttribute Page page,
+                                 @RequestParam String name,
+                                 @RequestParam String description,
                                  @RequestParam(required = false) MultipartFile main_picture,
                                  @RequestParam(required = false) MultipartFile picture1,
                                  @RequestParam(required = false) MultipartFile picture2,
@@ -110,23 +108,18 @@ public class PagesController {
         Page pageToEdit = repo.findById(id).orElseThrow();
         List<MultipartFile> pictureList = new ArrayList<>(List.of(main_picture, picture1, picture2, picture3, picture4, picture5));
 
+        pageToEdit.setName(name);
+        pageToEdit.setDescription(description);
+        pageToEdit.setDate(LocalDate.now());
+
         String fileName = main_picture.getOriginalFilename();
-        pageToEdit.setMain_picture(fileName);
 
-        fileName = picture1.getOriginalFilename();
-        pageToEdit.setPicture1(fileName);
-
-        fileName = picture2.getOriginalFilename();
-        pageToEdit.setPicture2(fileName);
-
-        fileName = picture3.getOriginalFilename();
-        pageToEdit.setPicture3(fileName);
-
-        fileName = picture4.getOriginalFilename();
-        pageToEdit.setPicture4(fileName);
-
-        fileName = picture5.getOriginalFilename();
-        pageToEdit.setPicture5(fileName);
+        if(!main_picture.isEmpty() && main_picture.getOriginalFilename() != null) pageToEdit.setMain_picture(fileName);
+        if(!picture1.isEmpty() && picture1.getOriginalFilename() != null) pageToEdit.setPicture1(picture1.getOriginalFilename());
+        if(!picture2.isEmpty() && picture2.getOriginalFilename() != null) pageToEdit.setPicture2(picture2.getOriginalFilename());
+        if(!picture3.isEmpty() && picture3.getOriginalFilename() != null) pageToEdit.setPicture3(picture3.getOriginalFilename());
+        if(!picture4.isEmpty() && picture4.getOriginalFilename() != null) pageToEdit.setPicture4(picture4.getOriginalFilename());
+        if(!picture5.isEmpty() && picture5.getOriginalFilename() != null) pageToEdit.setPicture5(picture5.getOriginalFilename());
 
         Page savedPage = repo.save(pageToEdit);
 

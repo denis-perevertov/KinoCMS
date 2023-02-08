@@ -76,6 +76,8 @@ label[name="movie_type"] {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: white;
     border: 1px solid rgba(142, 136, 136, 0.3);
+    -webkit-text-stroke-width: 0.4px;
+    -webkit-text-stroke-color: black;
 }
 
 #f {

@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 0;
+    justify-content: center;
+    flex-basis: 100px;
+}
+
+.container img:not(.plus) {
+    position: relative;
+    box-shadow: 1px 1px 10px grey;
+    /*
+    max-width: 250px;
+    max-height: 200px;
+    min-width: 100px;
+    min-height: 100px;
+    */
+
+    width: 250px;
+    height: 160px;
+}
+
+.plus { 
+    width: 100px;
+    height: 100px;
+    padding-top: 13%;
+}
+
+.delete-button:hover {
+    color: red;
+    transition: color 0.4s;
+}
+
+.theater-slot {
+    position: relative;
+
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    padding-top: 35px;
+
+    width: 24%;
+    text-decoration: none;
+    color: black;
+}
+
+.theater-slot:hover {
+    text-decoration: underline;
+    color: rgb(82, 12, 23);
+    box-shadow: 0px 0px 3px black;
+    transition: box-shadow 0.2s;
+}
+
+#delete-link {
+    position: absolute;
+    top: 6%;
+    right: 5%;
+    z-index: 1;
+    caret-color: transparent;
+}
+
+.theater-slot a {
+    color: black;
+    text-decoration: none;
+}
+
+

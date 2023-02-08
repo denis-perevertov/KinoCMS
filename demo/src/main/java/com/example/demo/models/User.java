@@ -5,7 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import com.example.demo.util.Gender;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;

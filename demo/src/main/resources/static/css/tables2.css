@@ -1,0 +1,22 @@
+
+.table {
+    margin-top: 30px;
+    text-align: left;
+}
+
+th, td:not(.icons){
+
+    border: 3px double black;
+    width: 240px;
+    height: 30px;
+    overflow: hidden;
+}
+
+td[class='icons'] {
+    padding-left: 20px;
+}
+
+th {
+    background-color: rgba(52, 104, 117, 0.6);
+    color: white;
+}

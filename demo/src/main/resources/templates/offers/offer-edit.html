@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/news.css">
     <link rel="stylesheet" href="/css/tables.css">
-    <link rel="stylesheet" href="/css/film-info.css">
+    <link rel="stylesheet" href="/css/film-info2.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
@@ -35,15 +35,20 @@
             <input type="date" name="date" th:value="${offer.date}">
         </div>
 
-        <div>
+        <div style="display: flex; align-items: center;">
             <p>Описание</p>
-            <input type="text" name="description" placeholder="Текст" class="big-text-box" th:value="${offer.description}">
+            <textarea name="description" id="description" placeholder="Описание" th:field="${offer.description}" cols="80" rows="10"></textarea>
         </div>
 
         <div class="picture-load">
 
             <p>Главная картинка</p>
-            <div class="preview" id="main_preview"><img th:src="empty.jpg" onclick="UploadImage(document.getElementById('main_preview'), document.getElementById('main_picture'))" alt=""></div>
+            <div class="preview" id="main_preview">
+                <img th:src="@{/images/offers/{id}/{pictureURL}(id=${offer.id}, pictureURL=${offer.main_picture})}"
+                     onclick="UploadImage(document.getElementById('main_preview'), document.getElementById('main_picture'))"
+                     onerror="this.onerror=null;this.src = '/images/empty.jpg';"
+                     alt="">
+            </div>
             <input type="file" name="main_picture" id="main_picture" accept="image/*" value="idk" style="display: none;"/>
             <button type="button" onclick="UploadImage(document.getElementById('main_preview'), document.getElementById('main_picture'))">Добавить</button>
             <button type="button" onclick="ClearImage(document.getElementById('main_preview'));">Удалить</button>
@@ -57,31 +62,56 @@
 
             <div class="gallery-pictures">
                 <div class="picture">
-                    <div class="preview" id="preview_1"><img th:src="@{/images/offers/{id}/{pictureURL}(id=${offer.id}, pictureURL=${offer.picture1})}" onclick="UploadImage(document.getElementById('preview_1'), document.getElementById('picture_1'))" alt=""></div>
+                    <div class="preview" id="preview_1">
+                        <img th:src="@{/images/offers/{id}/{pictureURL}(id=${offer.id}, pictureURL=${offer.picture1})}"
+                             onclick="UploadImage(document.getElementById('preview_1'), document.getElementById('picture_1'))"
+                             onerror="this.onerror=null;this.src = '/images/empty.jpg';"
+                             alt="">
+                    </div>
                     <input type="file" name="picture1" id="picture_1" accept="image/*" value="idk" style="display: none;"/>
                     <button type="button" onclick="UploadImage(document.getElementById('preview_1'), document.getElementById('picture_1'))">Добавить</button>
                     <button type="button" onclick="ClearImage(document.getElementById('preview_1'));">Удалить</button>
                 </div>
                 <div class="picture">
-                    <div class="preview" id="preview_2"><img th:src="@{/images/offers/{id}/{pictureURL}(id=${offer.id}, pictureURL=${offer.picture2})}" onclick="UploadImage(document.getElementById('preview_2'), document.getElementById('picture_2'))" alt=""></div>
+                    <div class="preview" id="preview_2">
+                        <img th:src="@{/images/offers/{id}/{pictureURL}(id=${offer.id}, pictureURL=${offer.picture2})}"
+                             onclick="UploadImage(document.getElementById('preview_2'), document.getElementById('picture_2'))"
+                             onerror="this.onerror=null;this.src = '/images/empty.jpg';"
+                             alt="">
+                    </div>
                     <input type="file" name="picture2" id="picture_2" accept="image/*" value="idk" style="display: none;"/>
                     <button type="button" onclick="UploadImage(document.getElementById('preview_2'), document.getElementById('picture_2'))">Добавить</button>
                     <button type="button" onclick="ClearImage(document.getElementById('preview_2'));">Удалить</button>
                 </div>
                 <div class="picture">
-                    <div class="preview" id="preview_3"><img th:src="@{/images/offers/{id}/{pictureURL}(id=${offer.id}, pictureURL=${offer.picture3})}" onclick="UploadImage(document.getElementById('preview_3'), document.getElementById('picture_3'))" alt=""></div>
+                    <div class="preview" id="preview_3">
+                        <img th:src="@{/images/offers/{id}/{pictureURL}(id=${offer.id}, pictureURL=${offer.picture3})}"
+                             onclick="UploadImage(document.getElementById('preview_3'), document.getElementById('picture_3'))"
+                             onerror="this.onerror=null;this.src = '/images/empty.jpg';"
+                             alt="">
+                    </div>
                     <input type="file" name="picture3" id="picture_3" accept="image/*" value="idk" style="display: none;"/>
                     <button type="button" onclick="UploadImage(document.getElementById('preview_3'), document.getElementById('picture_3'))">Добавить</button>
                     <button type="button" onclick="ClearImage(document.getElementById('preview_3'));">Удалить</button>
                 </div>
                 <div class="picture">
-                    <div class="preview" id="preview_4"><img th:src="@{/images/offers/{id}/{pictureURL}(id=${offer.id}, pictureURL=${offer.picture4})}" onclick="UploadImage(document.getElementById('preview_4'), document.getElementById('picture_4'))" alt=""></div>
+                    <div class="preview" id="preview_4">
+                        <img th:src="@{/images/offers/{id}/{pictureURL}(id=${offer.id}, pictureURL=${offer.picture4})}"
+                             onclick="UploadImage(document.getElementById('preview_4'), document.getElementById('picture_4'))"
+                             onerror="this.onerror=null;this.src = '/images/empty.jpg';"
+                             alt="">
+                    </div>
                     <input type="file" name="picture4" id="picture_4" accept="image/*" value="idk" style="display: none;"/>
                     <button type="button" onclick="UploadImage(document.getElementById('preview_4'), document.getElementById('picture_4'))">Добавить</button>
                     <button type="button" onclick="ClearImage(document.getElementById('preview_4'));">Удалить</button>
                 </div>
                 <div class="picture">
-                    <div class="preview" id="preview_5"><img th:src="@{/images/offers/{id}/{pictureURL}(id=${offer.id}, pictureURL=${offer.picture5})}" onclick="UploadImage(document.getElementById('preview_5'), document.getElementById('picture_5'))" alt=""></div>
+                    <div class="preview" id="preview_5">
+                        <img th:src="@{/images/offers/{id}/{pictureURL}(id=${offer.id}, pictureURL=${offer.picture5})}"
+                             onclick="UploadImage(document.getElementById('preview_5'), document.getElementById('picture_5'))"
+                             onerror="this.onerror=null;this.src = '/images/empty.jpg';"
+                             alt="">
+                    </div>
                     <input type="file" name="picture5" id="picture_5" accept="image/*" value="idk" style="display: none;"/>
                     <button type="button" onclick="UploadImage(document.getElementById('preview_5'), document.getElementById('picture_5'))">Добавить</button>
                     <button type="button" onclick="ClearImage(document.getElementById('preview_5'));">Удалить</button>

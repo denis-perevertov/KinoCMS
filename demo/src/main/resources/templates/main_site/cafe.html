@@ -5,9 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" th:href="@{/css/main_page_17.css}">
-  <link rel="stylesheet" th:href="@{/css/main_h_f1.css}">
-  <link rel="stylesheet" th:href="@{/css/news-list.css}">
+  <link rel="stylesheet" th:href="@{/css/main_page_22.css}">
+  <link rel="stylesheet" th:href="@{/css/main_h_f2.css}">
+  <link rel="stylesheet" th:href="@{/css/news-list3.css}">
+  <link rel="stylesheet" th:href="@{/css/pages1.css}">
   <title>KinoCMS</title>
 </head>
 <body>
@@ -17,21 +18,21 @@
 <div class="main">
 
   <div class="banner">
-    <img src="../images/empty.jpg" alt="">
+    <img th:src="@{/images/pages/{id}/{url}(id=${page.id}, url=${page.main_picture})}" alt="">
   </div>
 
   <div class="content">
 
     <div>
-      <h2 style="text-align: center">Кафе-бар</h2>
+      <h2 th:text="${page.name}" style="text-align: center">Кафе-бар</h2>
       <br>
-      <p>Lorem ipsum dolor sit amet</p>
+      <p th:text="${page.description}">Lorem ipsum dolor sit amet</p>
       <br>
 
       <div class="photos">
-        <div><img class="photo" src="../images/empty.jpg" alt=""></div>
-        <div><img class="photo" src="../images/empty.jpg" alt=""></div>
-        <div><img class="photo" src="../images/empty.jpg" alt=""></div>
+        <div><img class="photo" th:src="@{/images/pages/{id}/{url}(id=${page.id}, url=${page.picture1})}" alt=""></div>
+        <div><img class="photo" th:src="@{/images/pages/{id}/{url}(id=${page.id}, url=${page.picture2})}" alt=""></div>
+        <div><img class="photo" th:src="@{/images/pages/{id}/{url}(id=${page.id}, url=${page.picture3})}" alt=""></div>
       </div>
 
       <br>
@@ -42,9 +43,9 @@
 
         <thead>
         <tr>
-          <th>Head 1</th>
-          <th>Head 2</th>
-          <th>Head 3</th>
+          <th><span class="triangle" style="font-size: 12px">&#9660;</span> <span class="header-text">Head 1</span></th>
+          <th><span class="triangle" style="font-size: 12px">&#9660;</span> <span class="header-text">Head 2</span></th>
+          <th><span class="triangle" style="font-size: 12px">&#9660;</span> <span class="header-text">Head 3</span></th>
         </tr>
         </thead>
 

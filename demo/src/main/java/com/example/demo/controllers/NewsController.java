@@ -1,11 +1,12 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.Banner;
 import com.example.demo.models.News;
-import com.example.demo.models.Offer;
-import com.example.demo.models.User;
+import com.example.demo.repo.BannersRepository;
 import com.example.demo.repo.NewsRepository;
 import com.example.demo.util.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -15,24 +16,24 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/news")
+@SuppressWarnings("unused")
 public class NewsController {
+
+    @Value("${upload.path}")
+    private String uploadPath;
 
     @Autowired
     private NewsRepository newsRepository;
+
+    @Autowired
+    public BannersRepository bannerRepo;
 
     private static final String dir_name = "news";
     public static String image_upload_dir = "demo/" + "src/main/resources/static/images/" + dir_name;
@@ -45,7 +46,10 @@ public class NewsController {
     }
 
     @GetMapping("/{id}")
-    public String showOfferPage(@PathVariable Long id, Model model) {
+    public String showNewsPage(@PathVariable Long id, Model model) {
+
+        Banner banner = bannerRepo.findById(1L).orElseThrow();
+        model.addAttribute("website_background_image",banner.getWebsite_background_image());
 
         News article = newsRepository.findById(id).orElseThrow();
         model.addAttribute("article", article);
@@ -86,30 +90,25 @@ public class NewsController {
         if(!main_picture.isEmpty()) {
             news.setMain_picture(fileName);
         }
-
         if(!picture1.isEmpty()) {
             news.setPicture1(picture1.getOriginalFilename());
         }
-
         if(!picture2.isEmpty()) {
             news.setPicture2(picture2.getOriginalFilename());
         }
-
         if(!picture3.isEmpty()) {
             news.setPicture3(picture3.getOriginalFilename());
         }
-
         if(!picture4.isEmpty()) {
             news.setPicture4(picture4.getOriginalFilename());
         }
-
         if(!picture5.isEmpty()) {
             news.setPicture5(picture5.getOriginalFilename());
         }
 
         News savedNews = newsRepository.save(news);
 
-        String uploadDir = image_upload_dir + "/" + savedNews.getNews_id();
+        String uploadDir = uploadPath + "/" + dir_name + "/" + savedNews.getNews_id();
 
         for(MultipartFile picture : pictureList) {
             String f = StringUtils.cleanPath(picture.getOriginalFilename());
@@ -156,30 +155,25 @@ public class NewsController {
         if(!main_picture.isEmpty()) {
             news.setMain_picture(fileName);
         }
-
         if(!picture1.isEmpty()) {
             news.setPicture1(picture1.getOriginalFilename());
         }
-
         if(!picture2.isEmpty()) {
             news.setPicture2(picture2.getOriginalFilename());
         }
-
         if(!picture3.isEmpty()) {
             news.setPicture3(picture3.getOriginalFilename());
         }
-
         if(!picture4.isEmpty()) {
             news.setPicture4(picture4.getOriginalFilename());
         }
-
         if(!picture5.isEmpty()) {
             news.setPicture5(picture5.getOriginalFilename());
         }
 
         News savedNews = newsRepository.save(news);
 
-        String uploadDir = image_upload_dir + "/" + savedNews.getNews_id();
+        String uploadDir = uploadPath + "/" + dir_name + "/" + savedNews.getNews_id();
 
         for(MultipartFile picture : pictureList) {
             String f = StringUtils.cleanPath(picture.getOriginalFilename());

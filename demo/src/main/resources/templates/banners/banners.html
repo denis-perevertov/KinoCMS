@@ -8,13 +8,12 @@
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/sidebar.css">
         <link rel="stylesheet" href="/css/header.css">
-        <link rel="stylesheet" href="/css/banners.css">
+        <link rel="stylesheet" href="/css/banners4.css">
         
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
         
-        <script src="js/stuff.js"></script>
     </head>
     <body>
 
@@ -37,43 +36,27 @@
                         <i class="fa-solid fa-toggle-on fa-2xl" style="text-align: right; padding-right: 25px;"></i>
                     </div>
                     <div class="row2" id="row2">
-                        <div class="col">
-                            <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
-                            <div><button id="get_file">Добавить</button><input type="file" id="my_file" style="display: none;"></div>
-                            <div><input type="text" placeholder="URL"></div>
-                            <div><input type="text" placeholder="Текст"></div>
+                        <div class="photo_section" id="photo_section">
+                            <div th:each="banner : ${background_banners}" th:attr="data-bannerid=${banner.id}" class="col" >
+                                <div>
+                                    <img th:src="@{/images/banners/bg_banners/{url}(url=${banner.file_name})}" alt="">
+                                    <a style="color: black;" th:href="@{/banners/bg/{id}/delete(id=${banner.id})}">
+                                        <i onclick="deleteContainer(this)" class="fa-regular fa-circle-xmark fa-xl delete-button"></i>
+                                    </a>
+                                </div>
+                                <div><button type="button" onclick="upload(this)">Добавить</button><input type="file" onchange="showPhoto(this)" name="bg_banners" style="display: none;"></div>
+                                <div><input type="text" name="url" placeholder="URL"></div>
+                                <div><input type="text" name="title" placeholder="Текст"></div>
+                            </div>
                         </div>
-                        <div class="col">
-                            <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
-                            <div><button>Добавить</button></div>
-                            <div><input type="text" placeholder="URL"></div>
-                            <div><input type="text" placeholder="Текст"></div>
-                        </div>
-                        <div class="col">
-                            <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
-                            <div><button>Добавить</button></div>
-                            <div><input type="text" placeholder="URL"></div>
-                            <div><input type="text" placeholder="Текст"></div>
-                        </div>
-                        <div class="col">
-                            <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
-                            <div><button>Добавить</button></div>
-                            <div><input type="text" placeholder="URL"></div>
-                            <div><input type="text" placeholder="Текст"></div>
-                        </div>
-                        <div class="col">
-                            <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
-                            <div><button>Добавить</button></div>
-                            <div><input type="text" placeholder="URL"></div>
-                            <div><input type="text" placeholder="Текст"></div>
-                        </div>
+
 
                         <button type="button" id="insert_photo" onclick="addPhoto()">Добавить фото</button>
                     </div>
                     <div class="row3">
                         <div class="left">
                             <p>Скорость вращения</p>
-                            <select name="speed" id="turn-speed-list-1">
+                            <select class="turn-speed" name="speed1" id="turn-speed-list-1">
                                 <option value="5">5 с</option>
                                 <option value="10">10 с</option>
                                 <option value="15">15 с</option>
@@ -111,49 +94,35 @@
 
                 <h1>На главной новости акции</h1>
                 <div class="container">
+
                     <div class="row1">
                         <p>Размер: 1000х190</p>
                         <i class="fa-solid fa-toggle-on fa-2xl" style="text-align: right; padding-right: 25px;"></i>
                     </div>
+
                     <div class="row2">
-                        <div class="col">
-                            <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
-                            <div><button>Добавить</button></div>
-                            <div><input type="text" placeholder="URL"></div>
-                            <div><input type="text" placeholder="Текст"></div>
-                        </div>
-                        <div class="col">
-                            <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
-                            <div><button>Добавить</button></div>
-                            <div><input type="text" placeholder="URL"></div>
-                            <div><input type="text" placeholder="Текст"></div>
-                        </div>
-                        <div class="col">
-                            <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
-                            <div><button>Добавить</button></div>
-                            <div><input type="text" placeholder="URL"></div>
-                            <div><input type="text" placeholder="Текст"></div>
-                        </div>
-                        <div class="col">
-                            <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
-                            <div><button>Добавить</button></div>
-                            <div><input type="text" placeholder="URL"></div>
-                            <div><input type="text" placeholder="Текст"></div>
-                        </div>
-                        <div class="col">
-                            <div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div>
-                            <div><button>Добавить</button></div>
-                            <div><input type="text" placeholder="URL"></div>
-                            <div><input type="text" placeholder="Текст"></div>
+                        <div class="photo_section" id="photo_section_2">
+                            <div class="col" th:each="banner : ${offer_banners}">
+                                <div>
+                                    <img th:src="@{/images/banners/off_banners/{url}(url=${banner.file_name})}" alt="">
+                                    <a style="color: black; caret-color: transparent;" th:href="@{/banners/off/{id}/delete(id=${banner.id})}">
+                                        <i onclick="deleteContainer(this)" class="fa-regular fa-circle-xmark fa-xl delete-button"></i>
+                                    </a>
+                                </div>
+                                <div><button type="button" onclick="upload(this)">Добавить</button><input type="file" onchange="showPhoto(this)" name="off_banners" style="display: none;"></div>
+                                <div><input type="text" name="url" placeholder="URL"></div>
+                                <div><input type="text" name="title" placeholder="Текст"></div>
+                            </div>
                         </div>
 
-                        <button>Добавить фото</button>
+                        <button type="button" onclick="addPhoto2()">Добавить фото</button>
                     </div>
+
                     <div class="row3">
                         <div class="left">
                             <p>Скорость вращения</p>
-                            <select name="speed" id="turn-speed-list-2">
-                                <option value="5">5 с</option>
+                            <select class="turn-speed" name="speed2" id="turn-speed-list-2">
+                                <option value="5" selected="selected">5 с</option>
                                 <option value="10">10 с</option>
                                 <option value="15">15 с</option>
                                 <option value="20">20 с</option>
@@ -175,14 +144,80 @@
 
         
         <script>
-            document.getElementById('get_file').onclick = function() {
-                document.getElementById('my_file').click();
-            };
+
+            /*<![CDATA[*/
+
+            var speed1 = [[${speed1}]];
+            var speed2 = [[${speed2}]];
+            console.log(speed1);
+            console.log(speed2);
+
+            /*]]>*/
+
+            let selects = document.getElementsByClassName('turn-speed');
+
+            let options = selects[0].children;
+            for(let j = 0; j < options.length; j++) {
+                console.log(options[j].value);
+                console.log(speed1);
+                if (parseInt(options[j].value) === speed1) options[j].selected = true;
+            }
+
+            options = selects[1].children;
+            for(let j = 0; j < options.length; j++) {
+                console.log(options[j].value);
+                if (parseInt(options[j].value) === speed2) options[j].selected = true;
+            }
+
+
+            function showPhoto(file_input) {
+                let parentDiv = file_input.parentNode;
+                while(parentDiv.className != 'col') parentDiv = parentDiv.parentNode;
+
+                let imageDiv = parentDiv.firstChild;
+                imageDiv.removeChild(imageDiv.firstChild);
+
+                const curFiles = file_input.files;
+                if (curFiles.length === 0) {
+                    const image = document.createElement('img');
+                    image.src = "/images/empty.jpg";
+                    image.name = file_input.id;
+                    preview.prepend(image);
+                } else {
+                    const image = document.createElement('img');
+                    image.src = URL.createObjectURL(curFiles[0]);
+                    image.name = file_input.id;
+                    preview.prepend(image);
+                }
+            }
+
+            function upload(button) {
+                let file_input = button.parentNode.lastChild;
+                file_input.click();
+            }
 
             function addPhoto() {
-                document.getElementById('row2').innerHTML += '<div class="col"><div><img src="images/empty.jpg" alt=""><i class="fa-regular fa-circle-xmark fa-xl"></i></div><div><button>Добавить</button></div>'
+                document.getElementById('photo_section').innerHTML += '<div class="col"><div><img src="images/empty.jpg" alt="">'
+                + '<a style="color: black; caret-color: transparent;" th:href="@{/banners/bg/{id}/delete(id=${banner.id})}">'
+                + '<i onclick="deleteContainer(this)" class="fa-regular fa-circle-xmark fa-xl delete-button"></i>'
+                + '</a></div><div><button type="button" onclick="upload(this)">Добавить</button>'
+                + '<input type="file" onchange="showPhoto(this)" name="off_banners" style="display: none;"></div>'
                 + '<div><input type="text" placeholder="URL"></div><div><input type="text" placeholder="Текст"></div></div>';
             }
+
+            function addPhoto2() {
+                document.getElementById('photo_section_2').innerHTML += '<div class="col"><div><img src="images/empty.jpg" alt="">'
+                + '<a style="color: black; caret-color: transparent;" th:href="@{/banners/off/{id}/delete(id=${banner.id})}">'
+                + '<i onclick="deleteContainer(this)" class="fa-regular fa-circle-xmark fa-xl delete-button"></i>'
+                + '</a></div><div><button type="button" onclick="upload(this)">Добавить</button>'
+                + '<input type="file" onchange="showPhoto(this)" name="off_banners" style="display: none;"></div>'
+                + '<div><input type="text" placeholder="URL"></div><div><input type="text" placeholder="Текст"></div></div>';
+            }
+
+            function deleteContainer(button) {
+                button.parentNode.parentNode.parentNode.remove();
+            }
+
         </script>
 
         <script src="/file_upload.js"></script>

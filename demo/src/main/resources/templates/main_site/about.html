@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" th:href="@{/css/main_page_22.css}">
+  <link rel="stylesheet" th:href="@{/css/main_h_f2.css}">
+  <link rel="stylesheet" th:href="@{/css/news-list3.css}">
+  <title>KinoCMS - О кинотеатре</title>
+</head>
+<body>
+
+<div th:insert="main_h :: main_header"></div>
+
+<div class="main">
+
+  <div class="banner">
+    <img src="../images/caption.jpg" alt="">
+  </div>
+
+  <div class="content" style="column-gap: 1px;">
+
+    <div>
+      <h2 style="text-align: center">О кинотеатре</h2>
+      <br>
+      <p>Lorem ipsum dolor sit amet</p>
+      <br>
+      <p>Lorem ipsum dolor sit amet</p>
+      <br>
+      <p>Lorem ipsum dolor sit amet</p>
+      <br>
+      <p>Lorem ipsum dolor sit amet</p>
+      <br>
+      <p>Lorem ipsum dolor sit amet</p>
+      <br>
+
+      <img style="height: 400px;" src="../images/hall.png" alt="">
+
+      <br>
+      <h2 style="text-align: center">Оборудование</h2>
+      <br>
+      <p>Lorem ipsum dolor sit amet</p>
+      <br>
+      <p>Lorem ipsum dolor sit amet</p>
+      <br>
+
+      <div style="display: flex; justify-content: space-between;">
+        <img style="width: 48%;" src="../images/pic1.png" alt="">
+        <img style="width: 48%;" src="../images/pic2.png" alt="">
+      </div>
+
+      <br>
+      <p>Lorem ipsum dolor sit amet</p>
+      <br>
+      <p>Lorem ipsum dolor sit amet</p>
+      <br>
+    </div>
+
+    <div>
+      <div class="ad">Блок рекламы</div>
+    </div>
+
+  </div>
+
+</div>
+
+<div th:insert="main_f :: footer"></div>
+
+</body>
+</html>

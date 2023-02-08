@@ -1,0 +1,47 @@
+
+
+button i {
+    padding-right: 10px;
+    padding-left: -30px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.table {
+    margin-top: 30px;
+    text-align: left;
+}
+
+th, td:not(.icons){
+
+    border: 3px double black;
+    max-width: 120px;
+    width: 120px;
+    height: 40px;
+    overflow: hidden;
+}
+
+td[class='icons'] {
+    padding-left: 20px;
+}
+
+th:not(.fancySearchRow > *) {
+    background-color: rgba(52, 104, 117, 0.6);
+    color: white;
+}
+
+.fancySearchRow {
+    max-width: 1000px;
+    display: inline;
+    position: absolute;
+    top: 0;
+    right: 10%;
+    margin-top: 100px;
+}
+
+.fancySearchRow > * {
+    background-color: white;
+    border: none;
+}

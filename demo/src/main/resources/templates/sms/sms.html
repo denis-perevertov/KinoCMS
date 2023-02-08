@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/sidebar.css">
     <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/banners.css">
+    <link rel="stylesheet" href="/css/banners4.css">
     <link rel="stylesheet" href="/css/sms.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
@@ -88,7 +88,7 @@
             <div>
                 <p style="display: inline-block; padding-right: 20px; font-weight: bold">Загрузить HTML-письмо</p>
                 <button type="button" onclick="loadHTML()">Загрузить</button>
-                <input type="file" id="html_download" style="display: none">
+                <input type="file" accept="text/html" id="html_download" style="display: none">
                 <p id="html" style="font-weight: bold">Загружен файл: </p>
                 <p id="template" style="font-weight: bold">Шаблон используемый в текущей рассылке: </p>
                 <p id="email_count" style="font-weight: bold">Кол-во писем: </p>
@@ -105,7 +105,9 @@
 
         <div style="display: flex; justify-content: center; padding: 20px;">
 
-            <button onclick="emailSend()">Начать рассылку</button>
+            <form method="post">
+                <button onclick="emailSend()">Начать рассылку</button>
+            </form>
 
         </div>
 

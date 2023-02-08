@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" th:href="@{/css/main_page_17.css}">
-  <link rel="stylesheet" th:href="@{/css/main_h_f1.css}">
-  <link rel="stylesheet" th:href="@{/css/theater_page.css}">
+  <link rel="stylesheet" th:href="@{/css/main_page_22.css}">
+  <link rel="stylesheet" th:href="@{/css/main_h_f2.css}">
+  <link rel="stylesheet" th:href="@{/css/theater_page1.css}">
   <title>KinoCMS</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
 <div class="main">
 
   <div class="banner">
-    <img src="../images/empty.jpg" alt="">
+    <img th:src="@{/images/theaters/{id}/{url}(id=${theater.theater_id}, url=${theater.logo})}" alt="">
   </div>
 
   <div class="content">
@@ -26,15 +26,14 @@
       <div class="ad">Блок рекламы</div>
 
       <div>
-        <h4>Количество залов: 6</h4>
+        <h4>Количество залов: <span th:text="${hallAmount}">6</span></h4>
 
         <div class="hall-menu">
-          <div class="hall">Зал 1</div>
-          <div class="hall">Зал 2</div>
-          <div class="hall">Зал 3</div>
-          <div class="hall">Зал 4</div>
-          <div class="hall">Зал 5</div>
-          <div class="hall">Зал 6</div>
+          <a style="color: black; text-decoration: none;" th:each="hall : ${theater.halls}"
+             th:href="@{/theaters/{id}/{hall_id}(id=${theater.theater_id}, hall_id=${hall.hallId.hall_number})}"
+             class="hall">
+            <span th:text="${hall.name}">DefaultName</span>
+          </a>
         </div>
       </div>
 
@@ -42,28 +41,41 @@
         <h4>Смотреть сейчас: </h4>
 
         <div class="seance-menu">
-          <div class="seance">Сеанс 1</div>
-          <div class="seance">Сеанс 2</div>
-          <div class="seance">Сеанс 3</div>
-          <div class="seance">Сеанс 4</div>
-          <div class="seance">Сеанс 5</div>
-          <div class="seance">Сеанс 6</div>
+          <form action="/seance" method="get">
+            <button class="seance">Сеанс 1</button>
+          </form>
+          <form action="/seance" method="get">
+            <button class="seance">Сеанс 2</button>
+          </form>
+          <form action="/seance" method="get">
+            <button class="seance">Сеанс 3</button>
+          </form>
+          <form action="/seance" method="get">
+            <button class="seance">Сеанс 4</button>
+          </form>
+          <form action="/seance" method="get">
+            <button class="seance">Сеанс 5</button>
+          </form>
+          <form action="/seance" method="get">
+            <button class="seance">Сеанс 6</button>
+          </form>
         </div>
 
       </div>
 
-      <button>Расписание всех сеансов</button>
+      <form action="/schedule" method="get">
+        <button id="schedule-button">Расписание всех сеансов</button>
+      </form>
+
     </div>
 
     <div class="details">
       <div class="details-block">
-        <h2>Оскар</h2>
+        <h2 style="font-weight: bold;" th:text="${theater.name}">Оскар</h2>
       </div>
       <div class="details-block">
         <h2>Описание</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p th:text="${theater.description}">Lorem ipsum dolor sit amet</p>
 
       </div>
       <div class="details-block">
@@ -95,9 +107,55 @@
           </div>
         </div>
       </div>
-      <div class="details-block" style="display: flex; flex-direction: column;">
-        <h2>ФОТОГАЛЕРЕЯ</h2>
-        <img src="../images/empty.jpg" alt="">
+      <div class="snapshot">
+        <h2>Кадры и постеры</h2>
+        <div th:if="${(theater.picture1 != '' || theater.picture1 != null) ||
+         (theater.picture2 != '' && theater.picture2 != null) || (theater.picture3 != '' && theater.picture3 != null) ||
+          (theater.picture4 != '' && theater.picture4 != null) || (theater.picture5 != '' && theater.picture3 != null)}"
+             data-slideIndex="1" class="slideshow-container">
+
+          <div th:if="${(theater.picture1 != null) && (theater.picture1 != '')}" class="mySlides fade">
+            <img style="height: 500px"
+                 th:src="@{/images/theaters/{id}/{url}(id=${theater.theater_id}, url=${theater.picture1})}"
+                 onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+          </div>
+
+          <div th:if="${(theater.picture2 != null) && (theater.picture2 != '')}" class="mySlides fade">
+            <img style="height: 500px"
+                 th:src="@{/images/theaters/{id}/{url}(id=${theater.theater_id}, url=${theater.picture2})}"
+                 onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+          </div>
+
+          <div th:if="${(theater.picture3 != null) && (theater.picture3 != '')}" class="mySlides fade">
+            <img style="height: 500px"
+                 th:src="@{/images/theaters/{id}/{url}(id=${theater.theater_id}, url=${theater.picture3})}"
+                 onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+          </div>
+
+          <div th:if="${(theater.picture4 != null) && (theater.picture4 != '')}" class="mySlides fade">
+            <img style="height: 500px"
+                 th:src="@{/images/theaters/{id}/{url}(id=${theater.theater_id}, url=${theater.picture4})}"
+                 onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+          </div>
+
+          <div th:if="${(theater.picture5 != null) && (theater.picture5 != '')}" class="mySlides fade">
+            <img style="height: 500px"
+                 th:src="@{/images/theaters/{id}/{url}(id=${theater.theater_id}, url=${theater.picture5})}"
+                 onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1, this.parentNode)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1, this.parentNode)">&#10095;</a>
+
+          <div class="dots" style="text-align:center">
+            <span th:if="${(theater.picture1 != null) && (theater.picture1 != '')}" class="dot" onclick="currentSlide(1, this.parentNode.parentNode)"></span>
+            <span th:if="${(theater.picture2 != null) && (theater.picture2 != '')}" class="dot" onclick="currentSlide(2, this.parentNode.parentNode)"></span>
+            <span th:if="${(theater.picture3 != null) && (theater.picture3 != '')}" class="dot" onclick="currentSlide(3, this.parentNode.parentNode)"></span>
+            <span th:if="${(theater.picture4 != null) && (theater.picture4 != '')}" class="dot" onclick="currentSlide(4, this.parentNode.parentNode)"></span>
+            <span th:if="${(theater.picture5 != null) && (theater.picture5 != '')}" class="dot" onclick="currentSlide(5, this.parentNode.parentNode)"></span>
+          </div>
+
+        </div>
       </div>
     </div>
 
@@ -106,6 +164,8 @@
 </div>
 
 <div th:insert="main_f :: footer"></div>
+
+<script src="/slideshow.js"></script>
 
 </body>
 </html>

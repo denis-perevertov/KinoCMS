@@ -1,0 +1,143 @@
+.youtube-video {
+    height: 400px;
+    background-color: black;
+    color: white;
+}
+
+#video {
+    width: 100%;
+    height: 100%;
+}
+
+.schedule {
+    background-color: white;
+}
+
+.row {
+
+    display: flex;
+    column-gap: 20px;
+    row-gap: 15px;
+    justify-content: center;
+
+    font-size: 24px;
+
+    margin: 10px;
+    padding: 5px;
+}
+
+.row button {
+    width: 10%;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 16px;
+
+    box-shadow: 0px 0px 4px black;
+}
+
+.row button:nth-of-type(1) {
+    background-color: rgba(255, 255, 0, 0.4)
+}
+
+.row button:nth-of-type(2) {
+    background-color: rgba(0, 102, 255, 0.4)
+}
+
+.row button:nth-of-type(3) {
+    background-color: rgba(255, 51, 0, 0.4)
+}
+
+.row button:hover {
+    background-color: purple;
+    color: white;
+}
+
+.row button:active {
+    background-color: magenta;
+    color: white;
+}
+
+.day-block {
+    border: 1px solid black;
+    text-align: center;
+
+    padding: 8px;
+
+    cursor: pointer;
+}
+
+.day {
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+
+.cinema-schedule {
+    display: flex;
+    column-gap: 15px;
+    row-gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.time-block {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+
+.time-block:hover, .day-block:hover {
+    background-color: rgba(191, 191, 191, 0.3);
+    border: 4px solid black;
+    transition: background-color 0.2s, border 0.2s;
+}
+
+.time-block-row {
+    display: flex;
+}
+
+.time-block-row > * {
+    flex-grow: 1;
+    padding-inline: 3px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.row1 {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    justify-content: space-between;
+
+    margin: 10px;
+    padding-top: 25px;
+
+    text-align: center;
+}
+
+.movie-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.movie-description button {
+    margin-inline: auto;
+    padding-block: 20px;
+    width: 50%;
+    font-size: 20px;
+    font-family: Tahoma;
+    border: 2px solid silver;
+    border-radius: 20px;
+    background-color: rgb(1, 199, 1);
+    color: white;
+    box-shadow: 0px 0px 2px black;
+    cursor: pointer;
+}
+
+.movie-description button:hover {
+    background-color: rgb(51, 255, 51);
+    color: gray;
+}

@@ -5,8 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" th:href="@{/css/main_page_17.css}">
-  <link rel="stylesheet" th:href="@{/css/main_h_f1.css}">
+  <link rel="stylesheet" th:href="@{/css/main_page_22.css}">
+  <link rel="stylesheet" th:href="@{/css/main_h_f2.css}">
   <link rel="stylesheet" th:href="@{/css/theater_list.css}">
   <title>KinoCMS</title>
 </head>
@@ -29,7 +29,7 @@
       <div class="cinema-list">
 
         <div class="theater" th:each="theater : ${theaters}">
-          <a th:href="'/theaters/' + ${theater.theater_id}">
+          <a style="color: black; font-weight: bold; text-decoration: none;" th:href="'/theaters/' + ${theater.theater_id}">
             <img th:src="@{/images/theaters/{id}/{url}(id=${theater.theater_id}, url=${theater.logo})}" alt="">
             <p th:text="${theater.name}">Кинотеатр</p>
           </a>

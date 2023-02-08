@@ -1,0 +1,55 @@
+.banner img {
+    width: 100%;
+    max-height: 200px;
+}
+
+.seance {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    column-gap: 15px;
+}
+
+.seance > * {
+    width: 100%;
+}
+
+.ads {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-right: 15px;
+}
+
+.ads img {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.scheme {
+    margin-top: 10px;
+
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.scheme button {
+    padding-inline: 50px;
+    padding-block: 8px;
+    font-size: 20px;
+    margin-inline: 10px;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.scheme button:last-of-type {
+    background-color: rgba(102, 255, 102, 0.6);
+}
+
+.scheme button:hover {
+    background-color: black;
+    color: white;
+}

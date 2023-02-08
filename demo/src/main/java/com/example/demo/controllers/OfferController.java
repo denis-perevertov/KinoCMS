@@ -1,11 +1,11 @@
 package com.example.demo.controllers;
 
-import com.example.demo.models.News;
+import com.example.demo.models.Banner;
 import com.example.demo.models.Offer;
+import com.example.demo.repo.BannersRepository;
 import com.example.demo.repo.OffersRepository;
 import com.example.demo.util.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -15,17 +15,20 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequestMapping("/offers")
+@SuppressWarnings("unused")
 public class OfferController {
 
     @Autowired
     private OffersRepository repo;
+
+    @Autowired
+    public BannersRepository bannerRepo;
 
     private static String dir_name = "offers";
     public static String image_upload_dir = "demo/" + "src/main/resources/static/images/" + dir_name;
@@ -91,6 +94,9 @@ public class OfferController {
 
     @GetMapping("/{id}")
     public String showOfferPage(@PathVariable Long id, Model model) {
+
+        Banner banner = bannerRepo.findById(1L).orElseThrow();
+        model.addAttribute("website_background_image",banner.getWebsite_background_image());
 
         Offer offer = repo.findById(id).orElseThrow();
         model.addAttribute("offer", offer);

@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" th:href="@{/css/main_page_17.css}">
-    <link rel="stylesheet" th:href="@{/css/main_h_f1.css}">
-    <link rel="stylesheet" th:href="@{/css/offers_list1.css}">
+    <link rel="stylesheet" th:href="@{/css/main_page_22.css}">
+    <link rel="stylesheet" th:href="@{/css/main_h_f2.css}">
+    <link rel="stylesheet" th:href="@{/css/news-list3.css}">
     <title>KinoCMS</title>
 </head>
 <body>
@@ -17,21 +17,73 @@
 <div class="main">
 
     <div class="banner">
-        <img src="../images/empty.jpg" alt="">
+        <img src="/images/offers.png" alt="">
     </div>
 
     <div class="content">
 
         <div>
-            <h2>Ночные цены на все сеансы</h2>
+            <h2 th:text="${offer.name}">Ночные цены на все сеансы</h2>
             <div>
                 <span class="tag">Dreamtown</span>
                 <span class="tag">Gulliver</span>
             </div>
             <div class="offer-info">
-                <img src="../images/empty.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet</p>
+                <img th:src="@{/images/offers/{id}/{url}(id=${offer.id}, url=${offer.main_picture})}" alt="">
+                <p th:text="${offer.description}">Lorem ipsum dolor sit amet</p>
             </div>
+
+            <div class="snapshot">
+                <h2 style="text-align: center;">Кадры и постеры</h2>
+                <div th:if="${(offer.picture1 != '' && offer.picture1 != null) ||
+                 (offer.picture2 != '' && offer.picture2 != null) || (offer.picture3 != '' && offer.picture3 != null) ||
+                  (offer.picture4 != '' && offer.picture4 != null) || (offer.picture5 != '' && offer.picture3 != null)}"
+                     data-slideIndex="1" class="slideshow-container">
+
+                    <div th:if="${(offer.picture1 != null) && (offer.picture1 != '')}" class="mySlides fade">
+                        <img style="height: 500px"
+                             th:src="@{/images/offers/{id}/{url}(id=${offer.id}, url=${offer.picture1})}"
+                             onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+                    </div>
+
+                    <div th:if="${(offer.picture2 != null) && (offer.picture2 != '')}" class="mySlides fade">
+                        <img style="height: 500px"
+                             th:src="@{/images/offers/{id}/{url}(id=${offer.id}, url=${offer.picture2})}"
+                             onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+                    </div>
+
+                    <div th:if="${(offer.picture3 != null) && (offer.picture3 != '')}" class="mySlides fade">
+                        <img style="height: 500px"
+                             th:src="@{/images/offers/{id}/{url}(id=${offer.id}, url=${offer.picture3})}"
+                             onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+                    </div>
+
+                    <div th:if="${(offer.picture4 != null) && (offer.picture4 != '')}" class="mySlides fade">
+                        <img style="height: 500px"
+                             th:src="@{/images/offers/{id}/{url}(id=${offer.id}, url=${offer.picture4})}"
+                             onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+                    </div>
+
+                    <div th:if="${(offer.picture5 != null) && (offer.picture5 != '')}" class="mySlides fade">
+                        <img style="height: 500px"
+                             th:src="@{/images/offers/{id}/{url}(id=${offer.id}, url=${offer.picture5})}"
+                             onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+                    </div>
+
+                    <a class="prev" onclick="plusSlides(-1, this.parentNode)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1, this.parentNode)">&#10095;</a>
+
+                    <div class="dots" style="text-align:center">
+                        <span th:if="${(offer.picture1 != null) && (offer.picture1 != '')}" class="dot" onclick="currentSlide(1, this.parentNode.parentNode)"></span>
+                        <span th:if="${(offer.picture2 != null) && (offer.picture2 != '')}" class="dot" onclick="currentSlide(2, this.parentNode.parentNode)"></span>
+                        <span th:if="${(offer.picture3 != null) && (offer.picture3 != '')}" class="dot" onclick="currentSlide(3, this.parentNode.parentNode)"></span>
+                        <span th:if="${(offer.picture4 != null) && (offer.picture4 != '')}" class="dot" onclick="currentSlide(4, this.parentNode.parentNode)"></span>
+                        <span th:if="${(offer.picture5 != null) && (offer.picture5 != '')}" class="dot" onclick="currentSlide(5, this.parentNode.parentNode)"></span>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
 
         <div>
@@ -43,6 +95,8 @@
 </div>
 
 <div th:insert="main_f :: footer"></div>
+
+<script src="/slideshow.js"></script>
 
 </body>
 </html>

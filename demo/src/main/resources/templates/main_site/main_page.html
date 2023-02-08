@@ -5,8 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" th:href="@{/css/main_page_17.css}">
-  <link rel="stylesheet" th:href="@{/css/main_h_f1.css}">
+  <link rel="stylesheet" th:href="@{/css/main_page_22.css}">
+  <link rel="stylesheet" th:href="@{/css/main_h_f2.css}">
   <title>KinoCMS - Главная страница</title>
 </head>
 <body>
@@ -16,11 +16,27 @@
 
 <div class="main">
 
-  <h1>Смотрите сегодня</h1>
+  <div data-slideIndex="1" th:attr="data-slidespeed=${speed1}" class="slideshow-container" id="1">
+
+    <div th:each="banner : ${bg_banners}" class="mySlides fade">
+      <img th:src="@{/images/banners/bg_banners/{url}(url=${banner.file_name})}" alt="">
+      <div class="text"><span th:text="${banner.title}">Caption Text</span></div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1, this.parentNode)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1, this.parentNode)">&#10095;</a>
+
+    <div class="dots" style="text-align:center">
+      <span th:each="banner,iter : ${bg_banners}" class="dot" th:attr="onclick=|currentSlide('${iter.count}', this.parentNode.parentNode)|"></span>
+    </div>
+
+  </div>
+  <br>
+  <h1>Смотрите сегодня, <span class="date" th:text="${#temporals.format(today, 'dd.MM.yyyy')}"></span></h1>
 
   <div class="movie-list">
 
-    <div class="movie" th:each="movie : ${movies}">
+    <div class="movie" th:each="movie : ${movies}" th:if="${movie.release_date.isBefore(today)}">
       <img th:src="@{/images/movies/{url}(url=${movie.main_picture})}" alt="">
       <a th:href="@{/movies/{id}(id=${movie.id})}"><h4 th:text="${movie.name}"></h4></a>
       <a th:href="@{/movies/{id}(id=${movie.id})}"><button class="ticket">Купить билет</button></a>
@@ -34,19 +50,132 @@
 
   <h1>Смотрите скоро</h1>
 
+  <div class="movie-list">
+
+    <div class="movie" th:each="movie : ${movies}" th:if="${movie.release_date.isAfter(today)}">
+      <img th:src="@{/images/movies/{url}(url=${movie.main_picture})}" alt="">
+      <a th:href="@{/movies/{id}(id=${movie.id})}"><h4 th:text="${movie.name}"></h4></a>
+      <a th:href="@{/movies/{id}(id=${movie.id})}"><button class="ticket">Купить билет</button></a>
+    </div>
+
+  </div>
+
   <br>
 
   <hr style="color: black; background-color: black; height: 1px;">
 
   <h1>Новости и акции</h1>
 
-  <img class="offers" src="/images/empty.jpg" alt="">
+  <div data-slideIndex="1" th:attr="data-slidespeed=${speed2}" class="slideshow-container" id="2">
 
-  <div class="ad">Реклама</div>
+    <div th:each="banner : ${off_banners}" class="mySlides fade">
+      <img th:src="@{/images/banners/off_banners/{url}(url=${banner.file_name})}" alt="">
+      <div class="text"><span th:text="${banner.title}">Caption Text</span></div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1, this.parentNode)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1, this.parentNode)">&#10095;</a>
+
+    <div class="dots" style="text-align:center">
+      <span th:each="banner,iter : ${off_banners}" class="dot" th:attr="onclick=|currentSlide('${iter.count}', this.parentNode.parentNode)|"></span>
+    </div>
+
+  </div>
+
+  <div style="margin-top: 30px;" class="ad">Реклама</div>
 
 </div>
 
 <div th:insert="main_f :: footer"></div>
+
+<script th:inline="javascript">
+
+      /*<![CDATA[*/
+
+        var speed1 = /*[[${speed1}]]*/ 'default';
+        var speed2 = /*[[${speed1}]]*/ 'default';
+        console.log(speed1);
+        console.log(speed2);
+
+      /*]]>*/
+
+    let timeouts1 = [];
+    let timeouts2 = [];
+
+
+      initialShowSlides();
+
+    // Next/previous controls
+    function plusSlides(n, container) {
+      let index = parseInt(container.dataset.slideindex) + n;
+      container.dataset.slideindex = index;
+
+      if(container.getAttribute('id') == 1) {
+        for (var i=0; i<timeouts1.length; i++) {
+          clearTimeout(timeouts1[i]);
+        }
+      }
+      else if(container.getAttribute('id') == 2) {
+        for (var i=0; i<timeouts2.length; i++) {
+          clearTimeout(timeouts2[i]);
+        }
+      }
+      showSlides(index, container);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n, container) {
+
+      if(container.getAttribute('id') == 1) {
+        for (var i=0; i<timeouts1.length; i++) {
+          clearTimeout(timeouts1[i]);
+        }
+      }
+      else if(container.getAttribute('id') == 2) {
+        for (var i=0; i<timeouts2.length; i++) {
+          clearTimeout(timeouts2[i]);
+        }
+      }
+
+      showSlides(n, container);
+    }
+
+    function initialShowSlides() {
+        let containers = document.getElementsByClassName("slideshow-container");
+        for(let i = 0; i < containers.length; i++) {
+            showSlides(1, containers[i]);
+        }
+    }
+
+    function showSlides(n, container) {
+      console.log(container);
+      console.log(n);
+
+      n = parseInt(n);
+
+      let i;
+      let slides = container.getElementsByClassName("mySlides");
+      let dots = container.getElementsByClassName("dot");
+      if (n > slides.length) {n = 1; container.dataset.slideindex = 1;}
+      else if (n < 1) {n = slides.length; container.dataset.slideindex = slides.length;}
+      else {container.dataset.slideindex = n;}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[n-1].style.display = "block";
+      dots[n-1].className += " active";
+      if(container.getAttribute('id') == 1) {
+        timeouts1.push(setTimeout(function() {showSlides(n+1, container)}, parseInt(container.dataset.slidespeed)*1000));
+      }
+      else if (container.getAttribute('id') == 2) {
+        timeouts2.push(setTimeout(function() {showSlides(n+1, container)}, parseInt(container.dataset.slidespeed)*1000));
+      }
+
+    }
+</script>
 
 </body>
 </html>

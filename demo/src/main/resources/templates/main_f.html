@@ -2,29 +2,29 @@
   <div class="footer-info">
     <div class="footer-col">
       <div>
-        <h3>Мобильные приложения</h3>
+        <a href="/mobile"><h3>Мобильные приложения</h3></a>
       </div>
       <div>
-        <img src="../images/google-play-logo.svg" alt="">
-        <img src="../images/app-store-logo.svg" alt="">
+        <img src="/images/google-play-logo.svg" alt="">
+        <img src="/images/app-store-logo.svg" alt="">
       </div>
       <div>
         <h5>Разработка сайтов: AVADA-MEDIA</h5>
       </div>
     </div>
     <div class="footer-col">
-      <h3>Афиша</h3>
-      <h5>Расписание</h5>
-      <h5>Скоро в прокате</h5>
-      <h5>Кинотеатры</h5>
-      <h5>Акции</h5>
+      <a href="/posters"><h3>Афиша</h3></a>
+      <a href="/schedule"><h5>Расписание</h5></a>
+      <a href="/soon"><h5>Скоро в прокате</h5></a>
+      <a href="/theaters_list"><h5>Кинотеатры</h5></a>
+      <a href="/offers_list"><h5>Акции</h5></a>
     </div>
     <div class="footer-col">
-      <h3>О кинотеатре</h3>
-      <h5>Новости</h5>
-      <h5>Реклама</h5>
-      <h5>Кафе-бар</h5>
-      <h5>Контакты</h5>
+      <a href="/about"><h3>О кинотеатре</h3></a>
+      <a href="/news-list"><h5>Новости</h5></a>
+      <a href="/ads"><h5>Реклама</h5></a>
+      <a href="/cafe"><h5>Кафе-бар</h5></a>
+      <a href="/contacts"><h5>Контакты</h5></a>
     </div>
     <div class="footer-col">
       <p><i style="color: blue" class="fa-brands fa-facebook fa-2xl"></i></p>
@@ -42,8 +42,9 @@
 
   <style th:inline="css">
   body {
-    background: url(../images/banners/[[${website_background_image}]]);
+    background: url(/images/banners/[[${website_background_image}]]);
     background-size: clamp(150px, 500px, 800px) auto;
+    caret-color: transparent;
   }
 
   @media only screen and (max-width: 1024px){

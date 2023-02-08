@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/c8bdb5141b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" th:href="@{/css/main_page_22.css}">
+  <link rel="stylesheet" th:href="@{/css/main_h_f2.css}">
+  <link rel="stylesheet" th:href="@{/css/theater_page1.css}">
+  <title>KinoCMS</title>
+</head>
+<body>
+
+<div th:insert="main_h :: main_header"></div>
+
+<div class="main">
+
+  <div class="banner">
+    <img th:src="@{/images/theaters/{id}/{url}(id=${theater.theater_id}, url=${theater.logo})}" alt="">
+  </div>
+
+  <div class="content">
+
+    <div>
+      <div class="ad">Блок рекламы</div>
+
+      <div>
+        <h4>Смотреть сейчас: </h4>
+
+        <div class="seance-menu">
+          <form action="/seance" method="get">
+            <button class="seance">Сеанс 1</button>
+          </form>
+          <form action="/seance" method="get">
+            <button class="seance">Сеанс 2</button>
+          </form>
+          <form action="/seance" method="get">
+            <button class="seance">Сеанс 3</button>
+          </form>
+          <form action="/seance" method="get">
+            <button class="seance">Сеанс 4</button>
+          </form>
+          <form action="/seance" method="get">
+            <button class="seance">Сеанс 5</button>
+          </form>
+          <form action="/seance" method="get">
+            <button class="seance">Сеанс 6</button>
+          </form>
+        </div>
+
+      </div>
+
+      <form action="/schedule" method="get">
+        <button id="schedule-button">Расписание всех сеансов</button>
+      </form>
+
+    </div>
+
+    <div class="details">
+      <div class="details-block">
+        <h2 style="font-weight: bold;" th:text="${hall.name}">DefaultHallName</h2>
+      </div>
+      <div class="details-block">
+        <p th:text="${hall.description}">Lorem ipsum dolor sit amet</p>
+
+      </div>
+      <div class="details-block">
+        <h2>Карта зала</h2>
+        <img style="width: 100%;"
+             th:src="@{/images/theaters/{id}/{name}/{url}(id=${theater.theater_id}, name=${hall.name}, url=${hall.hall_scheme})}"
+             onerror="this.onerror=null;this.src = '/images/empty.jpg';"
+             alt="">
+      </div>
+      <div style="margin-bottom: 80px;" class="snapshot">
+        <h2>ФОТОГАЛЕРЕЯ</h2>
+        <div th:if="${(hall.picture1 != '' || hall.picture1 != null) ||
+         (hall.picture2 != '' && hall.picture2 != null) || (hall.picture3 != '' && hall.picture3 != null) ||
+          (hall.picture4 != '' && hall.picture4 != null) || (hall.picture5 != '' && hall.picture3 != null)}"
+             data-slideIndex="1" class="slideshow-container">
+
+          <div th:if="${(hall.picture1 != null) && (hall.picture1 != '')}" class="mySlides fade">
+            <img style="height: 500px"
+                 th:src="@{/images/theaters/{id}/{name}/{url}(id=${theater.theater_id}, name=${hall.name}, url=${hall.picture1})}"
+                 onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+          </div>
+
+          <div th:if="${(hall.picture2 != null) && (hall.picture2 != '')}" class="mySlides fade">
+            <img style="height: 500px"
+                 th:src="@{/images/theaters/{id}/{name}/{url}(id=${theater.theater_id}, name=${hall.name}, url=${hall.picture2})}"
+                 onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+          </div>
+
+          <div th:if="${(hall.picture3 != null) && (hall.picture3 != '')}" class="mySlides fade">
+            <img style="height: 500px"
+                 th:src="@{/images/theaters/{id}/{name}/{url}(id=${theater.theater_id}, name=${hall.name}, url=${hall.picture3})}"
+                 onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+          </div>
+
+          <div th:if="${(hall.picture4 != null) && (hall.picture4 != '')}" class="mySlides fade">
+            <img style="height: 500px"
+                 th:src="@{/images/theaters/{id}/{name}/{url}(id=${theater.theater_id}, name=${hall.name}, url=${hall.picture4})}"
+                 onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+          </div>
+
+          <div th:if="${(hall.picture5 != null) && (hall.picture5 != '')}" class="mySlides fade">
+            <img style="height: 500px"
+                 th:src="@{/images/theaters/{id}/{name}/{url}(id=${theater.theater_id}, name=${hall.name}, url=${hall.picture5})}"
+                 onerror="this.onerror=null;this.src = '/images/empty.jpg';" alt="">
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1, this.parentNode)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1, this.parentNode)">&#10095;</a>
+
+          <div class="dots" style="text-align:center">
+            <span th:if="${(hall.picture1 != null) && (hall.picture1 != '')}" class="dot" onclick="currentSlide(1, this.parentNode.parentNode)"></span>
+            <span th:if="${(hall.picture2 != null) && (hall.picture2 != '')}" class="dot" onclick="currentSlide(2, this.parentNode.parentNode)"></span>
+            <span th:if="${(hall.picture3 != null) && (hall.picture3 != '')}" class="dot" onclick="currentSlide(3, this.parentNode.parentNode)"></span>
+            <span th:if="${(hall.picture4 != null) && (hall.picture4 != '')}" class="dot" onclick="currentSlide(4, this.parentNode.parentNode)"></span>
+            <span th:if="${(hall.picture5 != null) && (hall.picture5 != '')}" class="dot" onclick="currentSlide(5, this.parentNode.parentNode)"></span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div th:insert="main_f :: footer"></div>
+
+<script src="/slideshow.js"></script>
+
+</body>
+</html>

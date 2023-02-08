@@ -1,0 +1,118 @@
+.main img {
+    max-width: 150px;
+    max-height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 2px solid black;
+}
+
+.main div {
+    padding-bottom: 20px;
+}
+
+.main p {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+
+button {
+    min-width: 120px;
+    min-height: 25px;
+}
+
+.picture-load {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 40%;
+}
+
+.gallery {
+    display: flex;
+}
+
+.gallery-pictures {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 20px;
+}
+
+.picture {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 20px;
+    padding: 10px;
+
+}
+
+.picture i {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.seo {
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    max-width: 80%;
+}
+
+.seo-block {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.seo-block p {
+    padding: 0;
+}
+
+.seo-block .names {
+    display: flex;
+    flex-direction: column;
+    column-gap: 10px;
+    row-gap: 10px;
+    padding: 10px;
+}
+
+.seo-block .inputs {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    column-gap: 10px;
+    row-gap: 10px;
+    padding: 10px;
+    padding-top: 8px;
+}
+
+.big-text-box {
+    width: 60%;
+    height: 80px;
+}
+
+.description-box {
+    width: 99%;
+    height: 80px;
+}
+
+.save {
+    display: flex;
+    justify-content: center;
+    column-gap: 40px;
+}
+
+.save button {
+    width: 200px;
+}
